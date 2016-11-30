@@ -15,29 +15,6 @@ var roleBuilder = {
 	    }
 
 	    if(creep.memory.building) {
-	        // look for things that need to be repaired first
-	        // we look for things that are at 50% of health.  no reason to drop what we are building for something that is at 99% which apparently happens
-	        // when you just walk on a road
-//	        var halfBroken = creep.room.find(FIND_STRUCTURES);
-//			var toRepair = [ ];
-//			console.log("halfbroken count: " + halfBroken.length);
-//			for(var index in halfBroken)
-//			{
-//			    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-//				if((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5)
-//					toRepair.push(halfBroken[index]);
-//            }
-
-//            console.log("to repair count: " + toRepair.length);
-//			if(toRepair.length)
-//			{
-//				var structure = toRepair[0];
-//				console.log("Reparing: " + structure.name + " type: " + structure.structureType +  " owner: " + structure.owner);
-//				creep.moveTo(structure);
-//				creep.repair(structure);
-
-//				return;
-//			}
 			
 			//if we get here nothing needed to be repaired right now.
 	        var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
@@ -57,6 +34,15 @@ var roleBuilder = {
                 }
             }
 	    }
+	},
+	
+	workToDo: function(creep)
+	{
+	    var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+        if(targets.length)
+			return true;
+        else
+	        return false;
 	}
 };
 

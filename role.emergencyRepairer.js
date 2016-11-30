@@ -1,4 +1,4 @@
-var roleRepairer = {
+var roleEmergencyRepairer = {
 
     //var testvar = "test";
     
@@ -46,20 +46,24 @@ var roleRepairer = {
 					if (((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart')
 				    	toRepair.push(halfBroken[index]);
             	}
-
-            	console.log("to repair count: " + toRepair.length);
             } else {
 	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
 	        }
 
-            
+            //console.log("to repair count: " + toRepair.length);
 			if(toRepair.length)
 			{
-				var structure = toRepair[0];
+			    if (toRepair.length > 2)
+				    var structure = toRepair[2];
+				else if (toRepair.length > 1)
+				    var structure = toRepair[1];
+				else
+				    var structure = toRepair[0];
 
 				creep.moveTo(structure);
 				var repairStatus = creep.repair(structure);
 				
+				//console.log(creep.name + ":   hits: " + structure.hits + "  hitsMax: " + structure.hitsMax)
 				if (repairStatus == OK && structure.hits != structure.hitsMax)  
 				    creep.memory.currentRepair = structure.id;
 				else 
@@ -105,4 +109,4 @@ var roleRepairer = {
 	}
 };
 
-module.exports = roleRepairer;
+module.exports = roleEmergencyRepairer;

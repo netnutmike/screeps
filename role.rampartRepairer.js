@@ -11,7 +11,7 @@ var roleWallRepairer = {
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
-	        creep.say('Repairing Wall');
+	        creep.say('Repairing Rampart');
 	    }
 
         //TODO once this is converted to classes this can be removed and use the actual function defined below
@@ -19,67 +19,76 @@ var roleWallRepairer = {
         var thereAreFixes = false;
         var thereAreRampartFixes = false;
         var thereIsNonWalls = false;
-        var needsRepairBaseValue = 0.00002;
-        var needsRepairIncreaseAmount = 0.00001;
+        var needsRepairBaseValue = 0.001;
+        var needsRepairIncreaseAmount = 0.001;
+        //Memory.rampartRepairValue = needsRepairBaseValue;
         
-        if (Memory.wallRepairValue > needsRepairBaseValue) {
-        	var needsRepairValue = Memory.wallRepairValue;
+        if (Memory.rampartRepairValue > needsRepairBaseValue) {
+        	var repairValue = Memory.rampartRepairValue;
         } else {
-        	var needsRepairValue = needsRepairBaseValue;
+        	var repairValue = needsRepairBaseValue;
         }
-        var needsRepairValue = 0.00002;
-        
-		for(var index in halfBroken)
-		{
-		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-			if(((halfBroken[index].hits / halfBroken[index].hitsMax) < needsRepairValue) && halfBroken[index].structureType == 'constructedWall')
-				thereAreFixes = true;
-			
+        	
+        if (creep.memory.currentRepair == "") {
+        	for(var index in halfBroken)
+			{
+		    	//console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
+				if(((halfBroken[index].hits / halfBroken[index].hitsMax) < repairValue) && halfBroken[index].structureType == 'rampart')
+					thereAreRampartFixes = true;
+        	}
         }
         
-//        for(var index in halfBroken)
-//		{
-//		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-//			if(((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.001) && halfBroken[index].structureType == 'rampart')
-//				thereAreRampartFixes = true;
-//			
-//        }
+        var toRepair = [ ];
         
-	    if(creep.memory.building && (thereAreFixes || thereAreRampartFixes)) {
+	    if(creep.memory.building ) { //&& (thereAreFixes || thereAreRampartFixes) || creep.memory.currentRepair != "") {
 	        // look for things that need to be repaired first
 	        // we look for things that are at 50% of health.  no reason to drop what we are building for something that is at 99% which apparently happens
 	        // when you just walk on a road
-	        var halfBroken = creep.room.find(FIND_STRUCTURES);
-			var toRepair = [ ];
-            
-
-		    for(var index in halfBroken)
-   				{
-   			    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-   				if ((((halfBroken[index].hits / halfBroken[index].hitsMax) < needsRepairValue) && halfBroken[index].structureType == 'constructedWall'))
-   			        toRepair.push(halfBroken[index]);
-               }
+	        
+	        if (creep.memory.currentRepair == "") {
+	            
+	        
+    	        var halfBroken = creep.room.find(FIND_STRUCTURES);
+    			
+    			//console.log("halfbroken count: " + halfBroken.length);
+    			
+    			
+    			for(var index in halfBroken)
+    			{
+    			    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
+    				if ((((halfBroken[index].hits / halfBroken[index].hitsMax) < repairValue) && halfBroken[index].structureType == 'rampart'))
+    			        toRepair.push(halfBroken[index]);
+                }
+	        } else {
+	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
+	        }
 
 
             //console.log("to repair count: " + toRepair.length);
-			if(toRepair.length)
+			if(toRepair.length)// || creep.memory.currentRepair != "")
 			{
-				var structure = toRepair[0];
-				//console.log("Reparing: " + structure.name + " type: " + structure.structureType);
+
+			    var structure = toRepair[0];
+
 				creep.moveTo(structure);
-				creep.repair(structure);
-				
-				Memory.wallRepairWaitCounter = 0;
+				var repairStatus = creep.repair(structure)
+
+				if (repairStatus == OK)  
+				    creep.memory.currentRepair = structure.id;
+				else 
+				    creep.memory.currentRepair = "";
+
+				Memory.rampartRepairWaitCounter = 0;
 
 			} else {
 				//nothing to repair, wait for 10 ticks to make sure, then increment the base fix level in memory by increase amount
-				Memory.wallRepairWaitCounter = Memory.wallRepairWaitCounter + 1;
-				console.log("+1");
-				if (Memory.wallRepairWaitCounter >= 10) {
-					Memory.wallRepairValue = Memory.wallRepairValue + needsRepairIncreaseAmount;
-					Game.notify("Increasing the base wall repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
-					console.log("*** Increasing the base rampart repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
-					Memory.wallRepairWaitCounter = 0;
+				Memory.rampartRepairWaitCounter = Memory.rampartRepairWaitCounter + 1;
+				//console.log("+1");
+				if (Memory.rampartRepairWaitCounter >= 10) {
+					Memory.rampartRepairValue = Memory.rampartRepairValue + needsRepairIncreaseAmount;
+					Game.notify("Increasing the base rampart repair value by " + needsRepairIncreaseAmount + " making it " + Memory.rampartRepairValue);
+					console.log("*** Increasing the base rampart repair value by " + needsRepairIncreaseAmount + " making it " + Memory.rampartRepairValue);
+					Memory.rampartRepairWaitCounter = 0;
 				}
 			}
 			

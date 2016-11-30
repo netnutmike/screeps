@@ -5,7 +5,9 @@ var roleRemoteUpgrader = require('role.remoteUpgrader');
 var roleldUpgrader = require('role.ldupgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
+var roleEmergencyRepairer = require('role.emergencyRepairer');
 var roleWallRepairer = require('role.wallRepairer');
+var roleRampartRepairer = require('role.rampartRepairer');
 var roleGuard = require('role.guard');
 
 var rolesController = {
@@ -39,8 +41,14 @@ var rolesController = {
             if(creep.memory.role == 'repairer') {
                 roleRepairer.run(creep);
             }
+            if(creep.memory.role == 'emergencyRepairer' || creep.memory.role == 'EmergencyRepairer') {
+                roleEmergencyRepairer.run(creep);
+            }
             if(creep.memory.role == 'wallRepairer') {
                 roleWallRepairer.run(creep);
+            }
+            if(creep.memory.role == 'rampartRepairer') {
+                roleRampartRepairer.run(creep);
             }
             
         }

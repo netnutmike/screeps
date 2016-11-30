@@ -14,9 +14,10 @@ var roleHarvester = {
             //console.log('Creep ' + creep.name + ' delivering:' + creep.memory.delivering + ' on board:' + creep.carry.energy);
             
             if(creep.memory.delivering != true) {
-                var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[1]);
+                //var sources = creep.room.find(FIND_SOURCES);
+                var sources = creep.pos.findClosestByPath(FIND_SOURCES);
+                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(sources);
                 }
                 
                 if(creep.carry.energy == creep.carryCapacity) {
