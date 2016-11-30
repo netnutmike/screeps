@@ -11,6 +11,9 @@ This code is very very ugly, once I get it all figured out I want to re-write it
 
 The ultimate goal is to be able to create a room, drop this code and let the room grow on it's with you only needed to put construction items when and where needed.
 
+# TODO List
+For the latest to list look at the top of the main.js file.  That is where I am adding things as I think about them.  You will also find TODO: in the code.
+
 # Changelog
 I am going to start putting details about my changes I upload here instead of in the commit messages.  This will also be like a diary as to what I was thinking so in the future I can look and see why did some of the stupid things I did.
 
