@@ -9,6 +9,9 @@
 //      is set in the rooms manager routines but being able to just setup options in the options 
 //      file is needed.  This would have to be for multiple rooms too
 //   Create option to define a long distance upgrader (in the same room) that specifies an energy source
+//   Build a tracking system nto the remote harvest and remote upgrade roles that determines based on trip times
+//      if the role for remote makes sense.  Like does it cost more to have the creep work or is it gaining more
+//      energy than it is expended.
 
 
 require('settings');
