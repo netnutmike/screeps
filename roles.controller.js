@@ -17,40 +17,43 @@ var rolesController = {
         for(var name in Game.creeps) {
             var creep = Game.creeps[name];
             
-            if(creep.memory.role == 'harvester') {
-                roleHarvester.run(creep);
+            switch (creep.memory.role) {
+            	case 'harvester':
+            		roleHarvester.run(creep);
+            		break;
+            	case 'remoteHarvester':
+            		roleRemoteHarvester.run(creep);
+            		break;
+            	case 'upgrader':
+            		roleUpgrader.run(creep);
+            		break;
+            	case 'remoteUpgrader':
+            		roleRemoteUpgrader.run(creep);
+            		break;
+            	case 'ldupgrader':
+            		roleldUpgrader.run(creep);
+            		break;
+            	case 'builder':
+            		roleBuilder.run(creep);
+            		break;
+            	case 'guard':
+            		roleGuard.run(creep);
+            		break;
+            	case 'repairer':
+            		roleRepairer.run(creep);
+            		break;
+            	case 'emergencyRepairer':
+            	case 'EmergencyRepairer':
+            		roleEmergencyRepairer.run(creep);
+            		break;
+            	case 'wallRepairer':
+            		roleWallRepairer.run(creep);
+            		break;
+            	case 'rampartRepairer':
+            		roleRampartRepairer.run(creep);
+            		break;
+            		
             }
-            if(creep.memory.role == 'remoteHarvester') {
-                roleRemoteHarvester.run(creep);
-            }
-            if(creep.memory.role == 'upgrader') {
-                roleUpgrader.run(creep);
-            }
-            if(creep.memory.role == 'remoteUpgrader') {
-                roleRemoteUpgrader.run(creep);
-            }
-            if(creep.memory.role == 'ldupgrader') {
-                roleldUpgrader.run(creep);
-            }
-            if(creep.memory.role == 'builder') {
-                roleBuilder.run(creep);
-            }
-            if(creep.memory.role == 'guard') {
-                roleGuard.run(creep);
-            }
-            if(creep.memory.role == 'repairer') {
-                roleRepairer.run(creep);
-            }
-            if(creep.memory.role == 'emergencyRepairer' || creep.memory.role == 'EmergencyRepairer') {
-                roleEmergencyRepairer.run(creep);
-            }
-            if(creep.memory.role == 'wallRepairer') {
-                roleWallRepairer.run(creep);
-            }
-            if(creep.memory.role == 'rampartRepairer') {
-                roleRampartRepairer.run(creep);
-            }
-            
         }
     }
 };

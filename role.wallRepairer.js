@@ -21,13 +21,15 @@ var roleWallRepairer = {
         var thereIsNonWalls = false;
         var needsRepairBaseValue = 0.00002;
         var needsRepairIncreaseAmount = 0.00001;
+        //Memory.wallRepairValue = needsRepairBaseValue;
         
         if (Memory.wallRepairValue > needsRepairBaseValue) {
         	var needsRepairValue = Memory.wallRepairValue;
+        	//console.log("using memory " + needsRepairValue);
         } else {
         	var needsRepairValue = needsRepairBaseValue;
         }
-        var needsRepairValue = 0.00002;
+        //var needsRepairValue = 0.00002;
         
 		for(var index in halfBroken)
 		{
@@ -45,12 +47,14 @@ var roleWallRepairer = {
 //			
 //        }
         
-	    if(creep.memory.building && (thereAreFixes || thereAreRampartFixes)) {
+        var toRepair = [ ];
+        
+	    if(creep.memory.building) {
 	        // look for things that need to be repaired first
 	        // we look for things that are at 50% of health.  no reason to drop what we are building for something that is at 99% which apparently happens
 	        // when you just walk on a road
 	        var halfBroken = creep.room.find(FIND_STRUCTURES);
-			var toRepair = [ ];
+			
             
 
 		    for(var index in halfBroken)
@@ -61,7 +65,7 @@ var roleWallRepairer = {
                }
 
 
-            //console.log("to repair count: " + toRepair.length);
+            //console.log("to repair wall count: " + toRepair.length);
 			if(toRepair.length)
 			{
 				var structure = toRepair[0];
@@ -74,11 +78,11 @@ var roleWallRepairer = {
 			} else {
 				//nothing to repair, wait for 10 ticks to make sure, then increment the base fix level in memory by increase amount
 				Memory.wallRepairWaitCounter = Memory.wallRepairWaitCounter + 1;
-				console.log("+1");
+			//	console.log("+1");
 				if (Memory.wallRepairWaitCounter >= 10) {
 					Memory.wallRepairValue = Memory.wallRepairValue + needsRepairIncreaseAmount;
 					Game.notify("Increasing the base wall repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
-					console.log("*** Increasing the base rampart repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
+					console.log("*** Increasing the base wall repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
 					Memory.wallRepairWaitCounter = 0;
 				}
 			}

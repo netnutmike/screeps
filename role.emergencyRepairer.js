@@ -11,26 +11,32 @@ var roleEmergencyRepairer = {
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
-	        creep.say('Repairing');
+	        creep.say('ERepairing ' + Memory.emergencyRepairCount);
 	    }
 	    
-	    var repairPercentage = 0.5;
+	    if (Memory.emergencyRepairMode == 999)
+	    	var repairPercentage = fixWhenIdlePercentage;
+	    else
+	    	var repairPercentage = (Memory.emergencyRepairMode / 100);
+	    
+	    
+	    //console.log("Repair percentage: " + repairPercentage);
 
         //TODO once this is converted to classes this can be removed and use the actual function defined below
-        var halfBroken = creep.room.find(FIND_STRUCTURES);
-        var thereAreFixes = false;
-        var thereIsNonWalls = false;
+        //var halfBroken = creep.room.find(FIND_STRUCTURES);
+        //var thereAreFixes = false;
+        //var thereIsNonWalls = false;
         
-		for(var index in halfBroken)
-		{
-		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-			if(((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart')
-				thereAreFixes = true;
-        }
+		//for(var index in halfBroken)
+		//{
+		//    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
+		//	if(((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart')
+		//		thereAreFixes = true;
+        //}
         
         var toRepair = [ ];
         
-	    if(creep.memory.building && thereAreFixes) {
+	    if(creep.memory.building) {
 	        // look for things that need to be repaired first
 	        // we look for things that are at 50% of health.  no reason to drop what we are building for something that is at 99% which apparently happens
 	        // when you just walk on a road
@@ -46,6 +52,8 @@ var roleEmergencyRepairer = {
 					if (((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart')
 				    	toRepair.push(halfBroken[index]);
             	}
+            	
+            	Memory.emergencyRepairCount = toRepair.length;
             } else {
 	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
 	        }
@@ -69,6 +77,17 @@ var roleEmergencyRepairer = {
 				else 
 				    creep.memory.currentRepair = "";
 
+				Memory.emergencyRepairWaitCounter = 0;
+			} else {
+				//nothing to repair, wait for 10 ticks to make sure, then increment the base fix level in memory by increase amount
+				Memory.emergencyRepairWaitCounter = Memory.emergencyRepairWaitCounter + 1;
+				//console.log("+1");
+				if (Memory.emergencyRepairWaitCounter >= 4) {
+					Memory.emergencyRepairMode = Memory.emergencyRepairMode + 10;
+					Game.notify("Increasing the Emergency repair value by 10 making it " + Memory.emergencyRepairMode);
+					console.log("*** Increasing the Emergency repair value by 10 making it " + Memory.emergencyRepairMode);
+					Memory.emergencyRepairWaitCounter = 0;
+				}
 			}
 			
 	    }
@@ -94,18 +113,70 @@ var roleEmergencyRepairer = {
 	    }
 	},
 	
-	workToDo: function(creep)
+	amINeeded: function(roomname)
 	{
-	    var halfBroken = creep.room.find(FIND_STRUCTURES);
-		console.log("halfbroken count: " + halfBroken.length);
+		// This fucntion will determine if the emergency Repairer is needed.  The following parameters used to determine the threashold
+		// minimumEmergencyRepairPercentage
+		// maximumInRepair
+		// percentageForMaximum
+		
+		var minimumEmergencyRepairPercentage = .10;
+		var maximumInRepair = 50;
+		var percentageForMaximum = .50;
+		var repairCount = 0;
+		
+	    var halfBroken = Game.rooms[roomname].find(FIND_STRUCTURES);
+		//console.log("halfbroken count: " + halfBroken.length);
+	    
+	    
 		for(var index in halfBroken)
 		{
-		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-			if((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage)
+		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax + "  " + ((halfBroken[index].hits/halfBroken[index].hitsMax) * 100) + "%");
+			if((halfBroken[index].hits / halfBroken[index].hitsMax) < minimumEmergencyRepairPercentage && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart') {
+				//console.log("returning because of low percentage");
 				return true;
+			}
+			
+			if((halfBroken[index].hits / halfBroken[index].hitsMax) <= percentageForMaximum && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart')
+				++repairCount;
         }
 
-        return false;
+		//console.log("RepairCount at or below " + percentageForMaximum + "% is " + repairCount);
+		if (repairCount >= maximumInRepair)
+			return true;
+		else
+			return false;
+	},
+	
+	amIStillNeeded: function(roomname)
+	{
+		// This fucntion will determine if the emergency Repairer is needed.  The following parameters used to determine the threashold
+		// minimumEmergencyRepairPercentage
+		// maximumInRepair
+		// percentageForMaximum
+		
+		var minimumEmergencyRepairPercentage = .10;
+		var maximumInRepairToRelease = 10;
+		var percentageForMaximum = .50;
+		var repairCount = 0;
+		
+		if (Memory.emergencyRepairMode <= (percentageForMaximum * 100))
+			return true;
+		
+	    var halfBroken = Game.rooms[roomname].find(FIND_STRUCTURES);
+		console.log("halfbroken count: " + halfBroken.length);
+	    
+	    
+		for(var index in halfBroken)	
+			if((halfBroken[index].hits / halfBroken[index].hitsMax) <= percentageForMaximum && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart')
+				++repairCount;
+        
+
+		console.log("RepairCount at or below " + percentageForMaximum + "% is " + repairCount);
+		if (repairCount >= maximumInRepairToRelease)
+			return true;
+		else
+			return false;
 	}
 };
 

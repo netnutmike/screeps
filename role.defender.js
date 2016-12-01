@@ -18,7 +18,7 @@ var roleDefender = {
             var halfBroken = Game.rooms[roomName].find(FIND_STRUCTURES);
 			var toRepair = [ ];
 			for(var index in halfBroken)
-				if((((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'road' && halfBroken[index].structureType != 'rampart') ||
+				if((((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'road' && halfBroken[index].structureType != 'rampart' && halfBroken[index].structureType != 'container' ) ||
 				(((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.0001) && halfBroken[index].structureType == 'rampart') )
 					toRepair.push(halfBroken[index]);
 					

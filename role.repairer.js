@@ -11,10 +11,10 @@ var roleRepairer = {
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
-	        creep.say('Repairing');
+	        creep.say('Repairing' + Memory.standardRepairCount);
 	    }
 	    
-	    var repairPercentage = 0.5;
+	    var repairPercentage = startRepairingAt;
 
         //TODO once this is converted to classes this can be removed and use the actual function defined below
         var halfBroken = creep.room.find(FIND_STRUCTURES);
@@ -47,7 +47,7 @@ var roleRepairer = {
 				    	toRepair.push(halfBroken[index]);
             	}
 
-            	console.log("to repair count: " + toRepair.length);
+            	Memory.standardRepairCount = toRepair.length;
             } else {
 	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
 	        }

@@ -4,17 +4,7 @@ var creepsManager = {
     
     run: function(roomName)
     {
-        // Define the number of each type of screeps that are needed
-        var buildersToBuild = 0;
-        var emergencyRepairersToBuild = 0;
-        var guardsToBuild = 2;
-        var harvestersToBuild = 3;
-        var rampartRepairersToBuild = 1;
-        var remoteHarvestersToBuild = 0;
-        var remoteUpgradersToBuild = 0;
-        var repairersToBuild = 1;
-        var upgradersToBuild = 3;
-        var wallRepairersToBuild = 1;
+        
         
         //clear old entries
         for(var name in Memory.creeps) {
@@ -66,19 +56,17 @@ var creepsManager = {
                 home: 'E68N14', 
                 remote: 'E67N14'});
             if (newName != -6 && newName != -4) { console.log('Spawning new remote upgrader: ' + newName); }
-        //} else if (ldupgraders.length < 1) {
-        //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'ldupgrader'});
-        //    //var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'upgrader'});
-        //    var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
-        //    console.log('Spawning new ldupgrader: ' + newName);
+        } else if (ldupgraders.length < ldUpgradersToBuild) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'ldupgrader'});
+            if (newName != -6 && newName != -4) { console.log('Spawning new ldupgrader: ' + newName); }
         } else if (repairers.length < repairersToBuild) {
             
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairer'});
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'repairer', currentRepair: ""});
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'repairer', currentRepair: ""});
                 if (newName != -6 && newName != -4) { console.log('Spawning new repairer: ' + newName); }
 
-        } else if (emergencyRepairers.length < emergencyRepairersToBuild) {
+        } else if (emergencyRepairers.length < emergencyRepairersToBuild  && Memory.emergencyRepairMode != 999) {
             
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairer'});
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
@@ -95,19 +83,26 @@ var creepsManager = {
             
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairer'});
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'wallRepairer'});
-                if (newName != -6 && newName != -4) { console.log('Spawning new wall repairer: ' + newName) };
+                if (builders.length == 0) {
+                	var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'wallRepairer'});
+                	if (newName != -6 && newName != -4) { console.log('Spawning new LARGE wall repairer: ' + newName) };
+                } else {
+                	var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'wallRepairer'});
+                	if (newName != -6 && newName != -4) { console.log('Spawning new NORMAL wall repairer: ' + newName) };
+                }
 
         } else if (builders.length < buildersToBuild) {
-            //var targets = Game.find(FIND_CONSTRUCTION_SITES);
-            //console.log('construction sites: ' + targets);
-            //if(targets.length || Game.rooms['E68N14'].memory.builderMode == 2)
-            //{
+        	//TODO: This is the last item in the if then else but if it was not, anything below it would not run if the mode called for
+        	//      a builder but there were no construction sites.  This needs to be re-designed so it will drop through if there is no construction
+        	var targets = Game.rooms[roomName].find(FIND_CONSTRUCTION_SITES);
+            //console.log('construction sites: ' + targets.length);
+            if(targets.length || Game.rooms[roomName].memory.builderMode == BUILD)
+            {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
             //    var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
                 if (newName != -6 && newName != -4) { console.log('Spawning new builder: ' + newName); }
-            //}
+            }
         }
 
     }
