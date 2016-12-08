@@ -9,6 +9,9 @@ var roleEmergencyRepairer = require('role.emergencyRepairer');
 var roleWallRepairer = require('role.wallRepairer');
 var roleRampartRepairer = require('role.rampartRepairer');
 var roleGuard = require('role.guard');
+var roleAttacker = require('role.attacker');
+var roleClaimer = require('role.claim');
+var roleNewUpgrader = require('role.newUpgrader');
 
 var rolesController = {
     
@@ -27,6 +30,9 @@ var rolesController = {
             	case 'upgrader':
             		roleUpgrader.run(creep);
             		break;
+            	case 'newUpgrader':
+            		roleNewUpgrader.run(creep);
+            		break;
             	case 'remoteUpgrader':
             		roleRemoteUpgrader.run(creep);
             		break;
@@ -34,12 +40,20 @@ var rolesController = {
             		roleldUpgrader.run(creep);
             		break;
             	case 'builder':
+            	case 'builder2':
+            	case 'builder3':
             		roleBuilder.run(creep);
             		break;
             	case 'guard':
             		roleGuard.run(creep);
             		break;
+            	case 'attacker':
+            	case 'attacekr':
+            		roleAttacker.run(creep);
+            		break;
             	case 'repairer':
+            	case 'repairer2':
+            	case 'repairer3':
             		roleRepairer.run(creep);
             		break;
             	case 'emergencyRepairer':
@@ -51,6 +65,9 @@ var rolesController = {
             		break;
             	case 'rampartRepairer':
             		roleRampartRepairer.run(creep);
+            		break;
+            	case 'claimer':
+            		roleClaimer.run(creep);
             		break;
             		
             }

@@ -1,3 +1,5 @@
+var alerts = require('alerts');
+
 var roleDefender = {
 
     /** @param {Creep} creep **/
@@ -8,8 +10,8 @@ var roleDefender = {
         if(hostiles.length > 0) {
             
             var username = hostiles[0].owner.username;
-            console.log("see hostiles: " + username);
-            Game.notify(`User ${username} spotted in room ${roomName}`);
+            alerts.newAlert(4,"see hostiles: " + username + " in room " + roomName);
+            alerts.newAlert(1,`(SL)(TX) User ${username} spotted in room ${roomName}`);
             var towers = Game.rooms[roomName].find(
                 FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
             //console.log("towers: " + towers.length);
@@ -19,7 +21,7 @@ var roleDefender = {
 			var toRepair = [ ];
 			for(var index in halfBroken)
 				if((((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'road' && halfBroken[index].structureType != 'rampart' && halfBroken[index].structureType != 'container' ) ||
-				(((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.0001) && halfBroken[index].structureType == 'rampart') )
+				(((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.0002) && halfBroken[index].structureType == 'rampart') )
 					toRepair.push(halfBroken[index]);
 					
 			var towers = Game.rooms[roomName].find(

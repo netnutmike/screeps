@@ -14,14 +14,19 @@ var roleHarvester = {
             //console.log('Creep ' + creep.name + ' delivering:' + creep.memory.delivering + ' on board:' + creep.carry.energy);
             
             if(creep.memory.delivering != true) {
-                //var sources = creep.room.find(FIND_SOURCES);
-                var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources);
-                }
+            	if (creep.memory.source == undefined || creep.memory.source == "") {
+            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		if (source != null)
+            			creep.memory.source = source.id;
+            	}
+    	        
+            	if (creep.memory.source != undefined && creep.memory.source != "")
+                    if(creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) 
+                        creep.moveTo(Game.getObjectById(creep.memory.source));
                 
                 if(creep.carry.energy == creep.carryCapacity) {
                     creep.memory.delivering = true;
+                    creep.memory.source = "";
                 }
             }
             else {

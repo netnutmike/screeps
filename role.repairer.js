@@ -11,6 +11,7 @@ var roleRepairer = {
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
+	        creep.memory.source = "";
 	        creep.say('Repairing' + Memory.standardRepairCount);
 	    }
 	    
@@ -69,24 +70,36 @@ var roleRepairer = {
 			
 	    }
 	    else {
-	         //TODO once this is converted to classes this can be removed and use the actual function defined below
-            var halfBroken = creep.room.find(FIND_STRUCTURES);
-            var thereAreFixes = false;
-            
-    		for(var index in halfBroken)
-    		{
-    		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-    			if((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage)
-    				thereAreFixes = true;
-            }
-            
-            if(thereAreFixes) {
-    	        //var sources = creep.room.find(FIND_SOURCES);
-    	        var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources);
-                }
-            }
+	    	
+	    	if (creep.room.name == creep.memory.remote) {
+		         //TODO once this is converted to classes this can be removed and use the actual function defined below
+	            var halfBroken = creep.room.find(FIND_STRUCTURES);
+	            var thereAreFixes = false;
+	            
+	    		for(var index in halfBroken)
+	    		{
+	    		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
+	    			if((halfBroken[index].hits / halfBroken[index].hitsMax) < repairPercentage)
+	    				thereAreFixes = true;
+	            }
+	            
+	            if(thereAreFixes) {
+	    	        //var sources = creep.room.find(FIND_SOURCES);
+	            	if (creep.memory.source == undefined || creep.memory.source == "") {
+                		source = creep.pos.findClosestByPath(FIND_SOURCES);
+                		if (source != null)
+                			creep.memory.source = source.id;
+                	}
+	    	        
+	            	if (creep.memory.source != undefined && creep.memory.source != "")
+	                    if(creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) 
+	                        creep.moveTo(Game.getObjectById(creep.memory.source));
+	                
+	            }
+	    	} else {
+	    		var exit = creep.room.findExitTo(creep.memory.remote);
+                creep.moveTo(creep.pos.findClosestByRange(exit));
+	    	}
 	    }
 	},
 	

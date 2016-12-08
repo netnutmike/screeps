@@ -11,6 +11,7 @@ var timer10Ticks = {
         	{
         	Memory.tenTicks = Game.time + 10;
         	//console.log("10 tick timer just fired");
+        	
         	}
     }
 };

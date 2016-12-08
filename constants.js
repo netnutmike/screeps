@@ -12,6 +12,10 @@ global.NEWROOM = 1;
 global.BUILD = 2;
 global.GROW = 3;
 
+// Builder Modes
+// Automode and BUILD
+
+
 
 // Creep Count Constants
 global.AUTOMODE = -1;

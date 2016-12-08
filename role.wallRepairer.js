@@ -1,3 +1,5 @@
+var alerts = require('alerts');
+
 var roleWallRepairer = {
 
     //var testvar = "test";
@@ -23,8 +25,8 @@ var roleWallRepairer = {
         var needsRepairIncreaseAmount = 0.00001;
         //Memory.wallRepairValue = needsRepairBaseValue;
         
-        if (Memory.wallRepairValue > needsRepairBaseValue) {
-        	var needsRepairValue = Memory.wallRepairValue;
+        if (creep.room.memory.wallRepairValue > needsRepairBaseValue) {
+        	var needsRepairValue = creep.room.memory.wallRepairValue;
         	//console.log("using memory " + needsRepairValue);
         } else {
         	var needsRepairValue = needsRepairBaseValue;
@@ -73,17 +75,16 @@ var roleWallRepairer = {
 				creep.moveTo(structure);
 				creep.repair(structure);
 				
-				Memory.wallRepairWaitCounter = 0;
+				creep.room.memory.wallRepairWaitCounter = 0;
 
 			} else {
 				//nothing to repair, wait for 10 ticks to make sure, then increment the base fix level in memory by increase amount
-				Memory.wallRepairWaitCounter = Memory.wallRepairWaitCounter + 1;
+				creep.room.memory.wallRepairWaitCounter = creep.room.memory.wallRepairWaitCounter + 1;
 			//	console.log("+1");
-				if (Memory.wallRepairWaitCounter >= 10) {
-					Memory.wallRepairValue = Memory.wallRepairValue + needsRepairIncreaseAmount;
-					Game.notify("Increasing the base wall repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
-					console.log("*** Increasing the base wall repair value by " + needsRepairIncreaseAmount + " making it " + Memory.wallRepairValue);
-					Memory.wallRepairWaitCounter = 0;
+				if (creep.room.memory.wallRepairWaitCounter >= 10) {
+					creep.room.memory.wallRepairValue = creep.room.memory.wallRepairValue + needsRepairIncreaseAmount;
+					alerts.newAlert(4,"(SL) Increasing the base wall repair value in room " + creep.room.name + " by " + needsRepairIncreaseAmount + " making it " + creep.room.memory.wallRepairValue);
+					creep.room.memory.wallRepairWaitCounter = 0;
 				}
 			}
 			

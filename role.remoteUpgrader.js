@@ -10,6 +10,7 @@ var roleRemoteUpgrader = {
 	    }
 	    if(!creep.memory.upgrading && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.upgrading = true;
+	        creep.memory.source = "";
 	       // Game.notify('Creep ' + creep.name + ' who is a ' + creep.memory.role + ' started going to upgrade controller at ' + Game.time);
 	        creep.say('upgrading');
 	    }
@@ -26,10 +27,15 @@ var roleRemoteUpgrader = {
         }
         else {
             if (creep.pos.roomName == creep.memory.remote) {
-                var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0]);
-                }
+            	if (creep.memory.source == undefined || creep.memory.source == "") {
+            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		if (source != null)
+            			creep.memory.source = source.id;
+            	}
+            	if (creep.memory.source != undefined && creep.memory.source != "")
+	                if(creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
+	                    creep.moveTo(Game.getObjectById(creep.memory.source));
+	                }
             } else {
                 var exit = creep.room.findExitTo(creep.memory.remote);
                 creep.moveTo(creep.pos.findClosestByRange(exit));

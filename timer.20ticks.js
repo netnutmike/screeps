@@ -1,4 +1,5 @@
 var roleEmergencyRepairer = require('role.emergencyRepairer');
+var alerts = require('alerts');
 
 var timer20Ticks = {
     
@@ -13,26 +14,31 @@ var timer20Ticks = {
         	Memory.twentyTicks = Game.time + 20;
         	
         	// everythng that follows gets executed
-        	var goToEmergencyRepairMode = roleEmergencyRepairer.amINeeded("E68N14");
-        	if (goToEmergencyRepairMode) {
-        		if (Memory.emergencyRepairMode == 999 || Memory.emergencyRepairMode == undefined) {
-        			Memory.emergencyRepairMode = 10;
-        			Game.notify(`Entered into Emergency Repair Mode`);
-        			console.log(`Entered into Emergency Repair Mode`);
-        		}
-        	} else {
-        		if (Memory.emergencyRepairMode != 999) {
-        			var amIStillNeeded = roleEmergencyRepairer.amIStillNeeded("E68N14");
-        			//console.log("Am I Still Needed: " + amIStillNeeded);
-        			if (!amIStillNeeded) {
-        				Memory.emergencyRepairMode = 999
-        				Game.notify(`Exited from Emergency Repair Mode`);
-        				console.log(`Exited from Emergency Repair Mode`);
-        			}
-        		}
+        	
+        	//Emergency Mode Check
+        	for(var room_it in Game.rooms) {
+                var room = Game.rooms[room_it];
+                //console.log("==== " + room.name + " ====");
+	        	var goToEmergencyRepairMode = roleEmergencyRepairer.amINeeded(room.name);
+	        	if (goToEmergencyRepairMode) {
+	        		if (room.memory.emergencyRepairMode == 999 || room.memory.emergencyRepairMode == undefined) {
+	        			room.memory.emergencyRepairMode = 10;
+	        			alerts.newAlert(1, "(SL) Room " + room.name + " Entered into Emergency Repair Mode");
+	        		}
+	        		//Memory.emergencyRepairMode = 10;
+	        	} else {
+	        		if (room.memory.emergencyRepairMode != 999) {
+	        			var amIStillNeeded = roleEmergencyRepairer.amIStillNeeded(room.name);
+	        			//console.log("Am I Still Needed in room "+ room.name + ": " + amIStillNeeded);
+	        			if (!amIStillNeeded) {
+	        				room.memory.emergencyRepairMode = 999;
+	        				alerts.newAlert(1, "(SL) Room " + room.name + " Exited from Emergency Repair Mode");
+	        			}
+	        		}
+	        	}
+	        	//console.log("Start Emergency Repair Mode in room " + room.name + ": " + goToEmergencyRepairMode);
+	        	//console.log("Current running emergency repair mode in room " + room.name + ": " + room.memory.emergencyRepairMode);
         	}
-        	//console.log("Start Emergency Repair Mode: " + goToEmergencyRepairMode);
-        	//console.log("Current running emergency repair mode: " + Memory.emergencyRepairMode);
 
         }
     }

@@ -4,8 +4,242 @@ require('constants');
 // Global Options
 global.gobalMode = AUTOMATIC;
 
+// Alert Level Settings  
+//   levels: 1 - game changers (level upgrades, mode changes, emergency repair modes)
+//           2 - Game activity (new creeps)
+//           3 - More Activity (clearing Creeps)
+//           4 - Details (rampart repair level changes)
+//           5 - Debugging
+//           6 - Debugging (in the weeds)
+global.consoleLogLevel = 4;					// outputs to the console
+global.alertLevel = 1;						// send game alert in email
+
 // Rooms
 global.home = "E68N14";
+global.room2 = "E69N14";
+
+global.rooms = {
+        'E68N14' : {									
+            'harvester' : {	
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'builder' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE 
+            },
+            'builder2' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E67N14',
+            	'body'  : AUTOMODE 
+            },
+            'builder3' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': 'E68N15',
+            	'body'  : AUTOMODE 
+            },
+            'upgrader' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'guard' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE 
+            },
+            'remoteUpgrader' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': 'E67N14',
+            	'body'  : AUTOMODE
+            },
+            'remoteHarvester' : {
+            	'build' : 6,
+            	'home'  : AUTOMODE,
+            	'remote': 'E68N15',
+            	'body'  : AUTOMODE
+            },
+            'ldupgrader' : {
+            	'build' : 0,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE 
+            },
+            'repairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'repairer2' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E67N14',
+            	'body'  : AUTOMODE
+            },
+            'repairer3' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E68N15',
+            	'body'  : AUTOMODE
+            },
+            'emergencyRepairer' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'rampartRepairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'wallRepairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'wallRepairer2' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'claimer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'attackers' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            }
+        },
+        'E69N14' : {									
+            'harvester' : {	
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'builder' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE 
+            },
+            'builder2' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E69N13',
+            	'body'  : AUTOMODE 
+            },
+            'builder3' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E69N15',
+            	'body'  : AUTOMODE 
+            },
+            'upgrader' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'guard' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE 
+            },
+            'remoteUpgrader' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': 'E69N13',
+            	'body'  : AUTOMODE
+            },
+            'remoteHarvester' : {
+            	'build' : 2,
+            	'home'  : AUTOMODE,
+            	'remote': 'E69N15',
+            	'body'  : AUTOMODE
+            },
+            'ldupgrader' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE 
+            },
+            'repairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'repairer2' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E69N13',
+            	'body'  : AUTOMODE
+            },
+            'repairer3' : {
+            	'build' : 1,
+            	'home'  : AUTOMODE,
+            	'remote': 'E69N15',
+            	'body'  : AUTOMODE
+            },
+            'emergencyRepairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'rampartRepairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'wallRepairer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'wallRepairer2' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'claimer' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'attackers' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            }
+        }
+};
 
 
 // Define the number of each type of screeps that are needed
@@ -13,17 +247,20 @@ global.home = "E68N14";
 // method of determining number of creeps per job based
 // on room level and operating mode.
 
-global.buildersToBuild = 1;
+global.buildersToBuild = 4;
 global.emergencyRepairersToBuild = 1;
 global.guardsToBuild = 2;
 global.harvestersToBuild = 3;
-global.ldUpgradersToBuild = 1;
+global.ldUpgradersToBuild = 0;
 global.rampartRepairersToBuild = 1;
-global.remoteHarvestersToBuild = AUTOMODE;
-global.remoteUpgradersToBuild = AUTOMODE;
+global.remoteHarvestersToBuild = 2;
+global.remoteUpgradersToBuild = 2;
 global.repairersToBuild = 1;
-global.upgradersToBuild = 7;
+global.upgradersToBuild = 3;
+global.newUpgradersToBuild = 3;
 global.wallRepairersToBuild = 1;
+global.attackersToBuild = 0;
+global.claimersToBuild = 0;
 
 
 // Repairer Settings

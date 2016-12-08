@@ -1,17 +1,14 @@
 //TODOs:
 
-//   Worker mode to make builder even if not needed (global option)
 //   Have harvesters fill up if there is no work but they are already at an energy source
 //   Find nearest energy source (implemented for builders)
 //   Create emergency mode in the event we are low on harvesters and energy
 //   Create auto suicide if a creep is injured
-//   Create option to define remote rooms for remote harvest and remote upgrade.  The number 
-//      is set in the rooms manager routines but being able to just setup options in the options 
-//      file is needed.  This would have to be for multiple rooms too
-//   Create option to define a long distance upgrader (in the same room) that specifies an energy source
-//   Build a tracking system nto the remote harvest and remote upgrade roles that determines based on trip times
+//   Build a tracking system into the remote harvest and remote upgrade roles that determines based on trip times
 //      if the role for remote makes sense.  Like does it cost more to have the creep work or is it gaining more
 //      energy than it is expended.
+//   Add room reservation capability
+//   Since going to multi-room the large wall repairer is spawned even when there are builders.
 
 
 require('settings');
@@ -28,17 +25,26 @@ var oneHundredTicksTimer = require('timer.100ticks');
 
 module.exports.loop = function () {
 
-    roomsManager.setMode(home,3);
-    roomsManager.setBuilderMode(home,1);
+    //roomsManager.setMode(home,BUILD);
+    //roomsManager.setBuilderMode(home,AUTOMODE);
+    //roomsManager.setMode(room2,GROW);
+    //roomsManager.setBuilderMode(room2,AUTOMODE);
     
+    // check all rooms
+    //for(var room_it in Game.rooms) {
+    //    var room = Game.rooms[room_it]
+    //    var spawn = room.find(FIND_MY_SPAWNS)[0]; 
     creepsManager.run(home);
+    creepsManager.run(room2);
 
-    rolesController.run();
-    roleDefender.run(home);
+    rolesController.run(); 
+    
     
     //Fire all timers to look for work.
     tenTicksTimer.run();
     twentyTicksTimer.run();
     oneHundredTicksTimer.run();
+    
+    
     
 }

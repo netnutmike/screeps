@@ -11,6 +11,7 @@ var roleEmergencyRepairer = {
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
+	        creep.memory.source = "";
 	        creep.say('ERepairing ' + Memory.emergencyRepairCount);
 	    }
 	    
@@ -44,7 +45,7 @@ var roleEmergencyRepairer = {
 	        if (creep.memory.currentRepair == "") {
 	        	var halfBroken = creep.room.find(FIND_STRUCTURES);
 				
-				//console.log("halfbroken count: " + halfBroken.length);
+				//console.log("halfbroken count in " + creep.room.name + ": " + halfBroken.length);
 			
 				for(var index in halfBroken)
 				{
@@ -58,7 +59,7 @@ var roleEmergencyRepairer = {
 	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
 	        }
 
-            //console.log("to repair count: " + toRepair.length);
+            //console.log("to repair count for " + creep.name + " in room " + creep.room.name + ": " + toRepair.length);
 			if(toRepair.length)
 			{
 			    if (toRepair.length > 2)
@@ -84,6 +85,9 @@ var roleEmergencyRepairer = {
 				//console.log("+1");
 				if (Memory.emergencyRepairWaitCounter >= 4) {
 					Memory.emergencyRepairMode = Memory.emergencyRepairMode + 10;
+					if (Memory.emergencyRepairMode > 100)
+						Memory.emergencyRepairMode = 100;
+					creep.room.memory.emergencyRepairMode = Memory.emergencyRepairMode;
 					Game.notify("Increasing the Emergency repair value by 10 making it " + Memory.emergencyRepairMode);
 					console.log("*** Increasing the Emergency repair value by 10 making it " + Memory.emergencyRepairMode);
 					Memory.emergencyRepairWaitCounter = 0;
@@ -104,11 +108,15 @@ var roleEmergencyRepairer = {
             }
             
             if(thereAreFixes) {
-    	        //var sources = creep.room.find(FIND_SOURCES);
-    	        var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources);
-                }
+            	if (creep.memory.source == undefined || creep.memory.source == "") {
+            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		if (source != null)
+            			creep.memory.source = source.id;
+            	}
+    	        
+            	if (creep.memory.source != undefined && creep.memory.source != "")
+                    if(creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) 
+                        creep.moveTo(Game.getObjectById(creep.memory.source));
             }
 	    }
 	},
@@ -126,14 +134,14 @@ var roleEmergencyRepairer = {
 		var repairCount = 0;
 		
 	    var halfBroken = Game.rooms[roomname].find(FIND_STRUCTURES);
-		//console.log("halfbroken count: " + halfBroken.length);
+		//console.log("am I needed halfbroken count in " + Game.rooms[roomname].name + ": " + halfBroken.length);
 	    
 	    
 		for(var index in halfBroken)
 		{
 		    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax + "  " + ((halfBroken[index].hits/halfBroken[index].hitsMax) * 100) + "%");
 			if((halfBroken[index].hits / halfBroken[index].hitsMax) < minimumEmergencyRepairPercentage && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'rampart') {
-				//console.log("returning because of low percentage");
+				//console.log("am I needed returning because of low percentage");
 				return true;
 			}
 			
@@ -141,7 +149,7 @@ var roleEmergencyRepairer = {
 				++repairCount;
         }
 
-		//console.log("RepairCount at or below " + percentageForMaximum + "% is " + repairCount);
+		//console.log("am I needed RepairCount at or below " + percentageForMaximum + "% is " + repairCount);
 		if (repairCount >= maximumInRepair)
 			return true;
 		else
@@ -160,11 +168,11 @@ var roleEmergencyRepairer = {
 		var percentageForMaximum = .50;
 		var repairCount = 0;
 		
-		if (Memory.emergencyRepairMode <= (percentageForMaximum * 100))
+		if (Game.rooms[roomname].memory.emergencyRepairMode <= (percentageForMaximum * 100))
 			return true;
 		
 	    var halfBroken = Game.rooms[roomname].find(FIND_STRUCTURES);
-		console.log("halfbroken count: " + halfBroken.length);
+		//console.log("halfbroken count: " + halfBroken.length);
 	    
 	    
 		for(var index in halfBroken)	
@@ -172,7 +180,7 @@ var roleEmergencyRepairer = {
 				++repairCount;
         
 
-		console.log("RepairCount at or below " + percentageForMaximum + "% is " + repairCount);
+		//console.log("RepairCount at or below " + percentageForMaximum + "% is " + repairCount);
 		if (repairCount >= maximumInRepairToRelease)
 			return true;
 		else

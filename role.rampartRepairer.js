@@ -1,3 +1,5 @@
+var alerts = require('alerts');
+
 var roleWallRepairer = {
 
     //var testvar = "test";
@@ -11,6 +13,7 @@ var roleWallRepairer = {
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
+	        creep.memory.source = "";
 	        creep.say('Repairing Rampart');
 	    }
 
@@ -20,11 +23,12 @@ var roleWallRepairer = {
         var thereAreRampartFixes = false;
         var thereIsNonWalls = false;
         var needsRepairBaseValue = 0.001;
-        var needsRepairIncreaseAmount = 0.001;
-        //Memory.rampartRepairValue = needsRepairBaseValue;
+        var needsRepairIncreaseAmount = 0.002;
         
-        if (Memory.rampartRepairValue > needsRepairBaseValue) {
-        	var repairValue = Memory.rampartRepairValue;
+        
+        //creep.room.memory.rampartRepairValue = 0;
+        if (creep.room.memory.rampartRepairValue > needsRepairBaseValue) {
+        	var repairValue = creep.room.memory.rampartRepairValue;
         } else {
         	var repairValue = needsRepairBaseValue;
         }
@@ -78,16 +82,18 @@ var roleWallRepairer = {
 				else 
 				    creep.memory.currentRepair = "";
 
-				Memory.rampartRepairWaitCounter = 0;
+				creep.room.memory.rampartRepairWaitCounter = 0;
 
 			} else {
 				//nothing to repair, wait for 10 ticks to make sure, then increment the base fix level in memory by increase amount
-				Memory.rampartRepairWaitCounter = Memory.rampartRepairWaitCounter + 1;
+				creep.room.memory.rampartRepairWaitCounter = creep.room.memory.rampartRepairWaitCounter + 1;
 				//console.log("+1");
-				if (Memory.rampartRepairWaitCounter >= 10) {
-					Memory.rampartRepairValue = Memory.rampartRepairValue + needsRepairIncreaseAmount;
-					Game.notify("Increasing the base rampart repair value by " + needsRepairIncreaseAmount + " making it " + Memory.rampartRepairValue);
-					console.log("*** Increasing the base rampart repair value by " + needsRepairIncreaseAmount + " making it " + Memory.rampartRepairValue);
+				if (creep.room.memory.rampartRepairWaitCounter >= 10) {
+					creep.room.memory.rampartRepairValue = creep.room.memory.rampartRepairValue + needsRepairIncreaseAmount;
+					//creep.room.memory.rampartRepairValue = Memory.rampartRepairValue;
+					alerts.newAlert(4,"(SL) Increasing the base rampart repair value in room " + creep.room.name + " by " + needsRepairIncreaseAmount + " making it " + creep.room.memory.rampartRepairValue);
+//					Game.notify("Increasing the base rampart repair value in room " + creep.room.name + " by " + needsRepairIncreaseAmount + " making it " + creep.room.memory.rampartRepairValue);
+//					console.log("*** Increasing the base rampart repair value in room " + creep.room.name + " by " + needsRepairIncreaseAmount + " making it " + creep.room.memory.rampartRepairValue);
 					Memory.rampartRepairWaitCounter = 0;
 				}
 			}
@@ -107,10 +113,15 @@ var roleWallRepairer = {
             
             if(thereAreFixes) {
     	        //var sources = creep.room.find(FIND_SOURCES);
-    	        var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-                if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources);
-                }
+            	if (creep.memory.source == undefined || creep.memory.source == "") {
+            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		if (source != null)
+            			creep.memory.source = source.id;
+            	}
+    	        
+            	if (creep.memory.source != undefined && creep.memory.source != "")
+                    if(creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) 
+                        creep.moveTo(Game.getObjectById(creep.memory.source));
             }
 	    }
 	},
