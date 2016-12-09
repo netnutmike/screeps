@@ -14,10 +14,16 @@ global.gobalMode = AUTOMATIC;
 global.consoleLogLevel = 4;					// outputs to the console
 global.alertLevel = 1;						// send game alert in email
 
+// Statistics Reports - These are sent between the top of the hour and 16 minutes after the hours in the array below, 
+// you can have as many as you want but more than 24 (one for each hour only generates a duplicate report
+// Hours are in UTC time so you will have to figure that out for your time zone.
+reportRunHours = [0,1,13,17,23];
+
 // Rooms
 global.home = "E68N14";
 global.room2 = "E69N14";
 
+//Room options
 global.rooms = {
         'E68N14' : {									
             'harvester' : {	
@@ -45,7 +51,7 @@ global.rooms = {
             	'body'  : AUTOMODE 
             },
             'upgrader' : {
-            	'build' : AUTOMODE,
+            	'build' : 6,
             	'home'  : AUTOMODE,
             	'remote': AUTOMODE,
             	'body'  : AUTOMODE
@@ -57,13 +63,13 @@ global.rooms = {
             	'body'  : AUTOMODE 
             },
             'remoteUpgrader' : {
-            	'build' : AUTOMODE,
+            	'build' : 3,
             	'home'  : AUTOMODE,
             	'remote': 'E67N14',
             	'body'  : AUTOMODE
             },
             'remoteHarvester' : {
-            	'build' : 6,
+            	'build' : 5,
             	'home'  : AUTOMODE,
             	'remote': 'E68N15',
             	'body'  : AUTOMODE
@@ -123,6 +129,12 @@ global.rooms = {
             	'body'  : AUTOMODE
             },
             'attackers' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'towerRepair' : {
             	'build' : AUTOMODE,
             	'home'  : AUTOMODE,
             	'remote': AUTOMODE,
@@ -233,6 +245,12 @@ global.rooms = {
             	'body'  : AUTOMODE
             },
             'attackers' : {
+            	'build' : AUTOMODE,
+            	'home'  : AUTOMODE,
+            	'remote': AUTOMODE,
+            	'body'  : AUTOMODE
+            },
+            'towerRepair' : {
             	'build' : AUTOMODE,
             	'home'  : AUTOMODE,
             	'remote': AUTOMODE,

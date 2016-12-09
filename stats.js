@@ -56,8 +56,29 @@ var stats = {
             	msg += "       wallRepairValue: " + room.memory.wallRepairValue + "\n";
             	
             	alerts.newAlert(1, msg);
-	            msg = "(SL)\n     Creeps in " + room.name + ":\n";
+            	
+            	msg = "(SL) == Rooms ==\n";
+            	msg += "   = " + room.name + " Stats =\n";
+            	
+            	var ticksSinceLast = Game.time - room.memory.lastStatReport;
+            	var totalWaitTime = (room.memory.noEnergyCount + room.memory.busyCount + room.memory.otherReasonCount);
+            	
+            	msg += "       Ticks since last report: " + ticksSinceLast + "\n";
+            	msg += "       Ticks waiting to build creeps: " + totalWaitTime + 
+            	"   which is " + Math.floor(((totalWaitTime / ticksSinceLast) * 100 )) + "% of total ticks\n";
+            	msg += "       Waiting breakdown:\n";
+            	msg += "          Busy     : " + Math.floor((room.memory.busyCount / totalWaitTime) * 100) + "%  (" + room.memory.busyCount + " ticks)\n";
+            	msg += "          No Energy: " + Math.floor((room.memory.noEnergyCount / totalWaitTime) * 100) + "%  (" + room.memory.noEnergyCount + " ticks)\n";
+            	msg += "          Other    : " + Math.floor((room.memory.otherReasonCount / totalWaitTime) * 100) + "%  (" + room.memory.otherReasonCount + " ticks)\n";
 	            
+            	alerts.newAlert(1, msg);
+            	
+            	room.memory.lastStatReport = Game.time;
+            	room.memory.noEnergyCount = 0;
+            	room.memory.busyCount = 0;
+            	room.memory.otherReasonCount = 0;
+            	
+            	msg = "(SL)\n     Creeps in " + room.name + ":\n";
 	            var creepJobs = {};
 	            for (var myCreep in Game.creeps) {
 	            	

@@ -17,6 +17,128 @@ For the latest to do list look at the top of the main.js file.  That is where I 
 # Changelog
 I am going to start putting details about my changes I upload here instead of in the commit messages.  This will also be like a diary as to what I was thinking so in the future I can look and see why did some of the stupid things I did.
 
+## 12-09-2016
+Today's changelog starts out with the anatomy of an attack and a short story.  These will explain the changes in the change log for today.
+
+I have been very focussed on automating the process of getting to the next level, building and growing.  And in the last change list I made some adjustments to the priorities of what creep get's built first.  For example, primary is the local havesters so they get energy and you can build more, then I had the remote havesters to get even more energy faster.  Because of some previous repair issues, repairers are next, then upgraders and then remote upgraders and then finally builders.
+
+I started to get attacked by the RPC with 2 invaders while I was sleeping, when I got up and saw in my email that my room had been under attack for almost 3 hours I went immediately to the computer.  They had not broken through the walls but had destroyed a few roads outside the wall.  But my tower was empty of energy and there was very little energy and hardly any creeps.  I watched for a while to see what was happening and in a few minutes took what might be considered the cheaters way out and put the room into safe mode.  I have never used a safe mode after the initial one that you get when you create the room.
+
+I determined the following problems.  First, I have been relying on my regular harvesters to keep the tower energy filled.  It is just one of the things they find and since it was built in level 3, after the spawn and the fist 10 exentions are full they go fill it up until it is full then go to extention number 11 and keep going.  This is a flaw because during that attack it emptied quickly because there were 2 invaders.  My defenders require energy from about 13 of the extentions.  So exentions 11 - 13 were never getting filled.  On top of that, I was sending remote harvesters to their death because the invaders would take them out as soon as they got close.  I was stuck in a constant loop of building remote harvesters and trying to keep the tower powered up.  When the harvesters would catch up enough for the remote havesters they would put a little energy into the tower and it would fight back for a litle bit and run out again.  The one invader was basically dead and the other one was injured pretty good so I think eventually it would have worked itself out, but not ideal.
+
+Here are the changes that have been made to hopefully make the situation better during the next attack:
+
+* I changed the build priory in creeps.manager.  Now, all creeps that work within the room have priority over any creep that leaves the room to do it's work.  That means that the room shoud stabilize faster exspecially when there is an attack situation.  It might take longer to get the remote stuff working and the energy will grow slower but while in an attack, operations inside the room will continue.
+* For all of the creeps that are built and sent to another room, before I spawn a new creep, I first check to see if there are hostiles in the room, if there are then the creep is not spawned because I could be sending them to their death witch is a waste of energy and time.
+* I created a new role called towerRepair.  This creep will only spawn if the tower is not at 100% capacity.  The build priority is just after teh defenders and they are just after the harvesters so it is high on the list.  If this creep finishes getting the tower to 100%, it will revert back to tehjob of a regular havester, might as well not waste them if they get done quickly.
+* Because of the new role above, the harvesters have been modified to only provide energy to spawns and extentions.
+* I changed how creeps.manager outputs new builds of creeps.  It used to be a console.log for every creep type in the if then else.  I now have added jobTitle and created one alert after all of the if statements.  It is using the new alert routine so output can be adjust to the console and email.  I also setup an alert that is just one level short of debugging that will output when it wants to spawn something but cannot.  My long term goal is to eventually keep stats on an unable to build situation.  That can help make changes to accomodate the number of different roles.  For example, if you are frequently short on energy you can make adjustments to build less expensive creeps, fewer of them or maybe add a remote harvester.
+* I added to the outputs section mentioned above, counters so that when the stats report runs it can provide details about how much wait time there is to build and the reason for the wait time.  This can be useful to make adjustments to the game setings for that room.  I have not yet modifed the stat emails to do the calculations.
+* I modifed the stats report to provide stats about the wait time as mentioned above.  The stats are per room so you can reivew how your rooms are working.
+* When I first created the stat reports I had them sending out twice a day at 8 am and 8pm.  That is 1am and 1pm UTC.  These values were hard coded into the timer routine.  Now there is an option in the settings file that allows you to add as many hours to an array that you want the report to run.  If you want it once, great.  Want it every hour you are awake, fine too.  The hours are still UTC as that is the clock that the screeps server is set to.
+* Here is an example of what one of the stat reports looks like for my 2 rooms:
+```
+(SL)=== Current Game Stats: ===
+
+ == GCL ==
+   GCL: 2
+   progress to next level: 2691186 / 4278031.643091577  62%
+
+ == Overall Stats ==
+   Rooms: 6
+   Creeps: 49
+   Spawns: 2
+   Structures: 88
+   Construction Sites: 61
+   Time: 15895854
+   
+(SL) == Rooms ==
+   = E68N14 =
+    ** CONTROLLED     Energy: 700 / 2300   30 %
+     Current Level: 6
+     Next Level Progress: 1022724 / 3645000   28 %
+     Safemode Countdown: * Not in SafeMode *
+     Safemodes Available: 3
+     Safemode Cooldown Countdown: * No Cool Down *
+     Ticks till Downgrade: 60000
+
+     Memory:
+       Mode: 3
+       builderMode: -1
+       lastLevel: 6
+       rampartRepairValue: 0.04600000000000003
+       emergencyRepairMode: 10
+       wallRepairValue: 0.000360000000000
+       
+(SL) == Rooms ==
+   = E68N14 Stats =
+       Ticks since last report: 100
+       Ticks waiting to build creeps: 0   which is 0% of total ticks
+       Waiting breakdown:
+          Busy     : NaN%  (0 ticks)
+          No Energy: NaN%  (0 ticks)
+          Other    : NaN%  (0 ticks)
+          
+ (SL)
+     Creeps in E68N14:
+       upgrader: 6
+       harvester: 3
+       remoteUpgrader: 3
+       wallRepairer: 1
+       builder: 1
+       emergencyRepairer: 1
+       remoteHarvester: 5
+       repairer: 1
+       rampartRepairer: 1
+       repairer2: 1
+       repairer3: 1
+       
+(SL) == Rooms ==
+   = E69N14 =
+    ** CONTROLLED     Energy: 657 / 1800   36 %
+     Current Level: 5
+     Next Level Progress: 145360 / 1215000   11 %
+     Safemode Countdown: * Not in SafeMode *
+     Safemodes Available: 2
+     Safemode Cooldown Countdown: * No Cool Down *
+     Ticks till Downgrade: 40000
+
+     Memory:
+       Mode: 3
+       builderMode: -1
+       lastLevel: 5
+       rampartRepairValue: 0.054000000000000034
+       emergencyRepairMode: 10
+       wallRepairValue: 0.000450000000000
+       
+(SL) == Rooms ==
+   = E69N14 Stats =
+       Ticks since last report: 100
+       Ticks waiting to build creeps: 15   which is 15% of total ticks
+       Waiting breakdown:
+          Busy     : 40%  (6 ticks)
+          No Energy: 60%  (9 ticks)
+          Other    : 0%  (0 ticks)
+          
+ (SL)
+     Creeps in E69N14:
+       upgrader: 7
+       wallRepairer: 1
+       builder: 1
+       remoteUpgrader: 3
+       builder3: 1
+       repairer2: 1
+       emergencyRepairer: 1
+       remoteHarvester: 2
+       harvester: 3
+       repairer: 1
+       rampartRepairer: 1
+       repairer3: 1
+       guard: 1
+       towerRepair: 1                                   
+```
+
+
 ## 12-07-2016
 * Created a stats.js file that when run will generate and email out game details like levels, progress to next level, room stats about level, memory settings, resources, creeps and their jobs, etc.  I setup a Date check function in the 100 ticks routine to check for when it is between 8 am or pm and 8:16.  If it is, the stats are run and emailed out.
 * I modified all of the roles that look for a source of energy.  It used to be that every clock tick they would try to find the closest energy.  The findclosestbypath is a very expensive CPU operation.  Now, when they go looking for n energy source they run the findClosestByPath and remember the structure.  On the next clock tick they head towards that source without calculating the path, saving CPU time.  There is one negative side affect to this.  If while enroute to an energy source, all of the positions get full or the source runs out of energy, it will keep heading to that source.  The old way, it would change its course to the next closest source.  I can probably write some code that can check the source on each clock tick and if that happens, re-run the findClosestByPath process and keep going.  I have not done that yet.

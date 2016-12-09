@@ -62,17 +62,16 @@ var timer100Ticks = {
                 	}
             }
             
-            
-            // Check to see if it is time to send the twice daily stats
-            if (Game.time > Memory.nextStatSend) {
-            	stats.run();
-            	Memory.nextStatSend = Game.time + 9000;
-            }
+            //stats.run();
             
             var d = new Date();
             
-            if ((d.getHours() == 13 || d.getHours() == 1) && d.getMinutes() >= 0 && getMinutes() <= 16) {
-            	stats.run();
+            
+            
+            for(var tm in reportRunHours) {
+            	if (d.getHours() == reportRunHours[tm] && d.getMinutes() >= 0 && d.getMinutes() <= 16) {
+                	stats.run();
+                }
             }
         }
     }

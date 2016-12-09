@@ -12,6 +12,7 @@ var roleGuard = require('role.guard');
 var roleAttacker = require('role.attacker');
 var roleClaimer = require('role.claim');
 var roleNewUpgrader = require('role.newUpgrader');
+var towerRepair = require('role.towerRepair')
 
 var rolesController = {
     
@@ -68,6 +69,9 @@ var rolesController = {
             		break;
             	case 'claimer':
             		roleClaimer.run(creep);
+            		break;
+            	case 'towerRepair':
+            		towerRepair.run(creep);
             		break;
             		
             }

@@ -83,13 +83,18 @@ var roleRemoteHarvester = {
 			cost += BODYPART_COST[creep.body[bp].type];
 		}
 		
-		console.log("Cost: " + cost);
+		//console.log("Cost: " + cost);
 		if (totalCarryEnergyPerLife < cost) {
-			msg = "(SL) Remote Harvester " + crep.name + " based out of room " + creep.memory.home + " doing " + creep.memory.role +
+			msg = "(SL) Remote Harvester " + creep.name + " based out of room " + creep.memory.home + " doing " + creep.memory.role +
 			"is costing more than it is making\n\nCost: " + cost + "\nLifetime Energy Transport: " + totalCarryEnergyPerLife + "\n\nTrip Details:\n  From Start to Energy: " +
 			(creep.memory.timeArrivedAtSource - creep.memory.timeStartedToResource);
 			
-			alerts.newAlert(1,msg);
+			//alerts.newAlert(1,msg);
+			
+			creep.memory.timeArrivedAtSource = "";
+			creep.memory.timeCompleted = "";
+			creep.memory.timeStartedToResource = "";
+			creep.memory.timeStartedDelivery = "";
 		}
 			
 		
