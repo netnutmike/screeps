@@ -12,6 +12,12 @@ The ultimate goal is to be able to create a room, drop this code and let the roo
 # TODO List
 For the latest to do list look at the top of the main.js file.  That is where I am adding things as I think about them.  You will also find TODO: in the code.
 
+# Walkthrough
+I am going to start working on a step by step walkthough of starting from a new account and new room using these scripts.  I will e writing it as I start new on a private server so it will take some time.  It will be called walkthrough.md and will be part of the package you get from github.
+
+# Wiki
+I am going to start creating a wiki in my spare time that details all of the roles, functions, etc.  I do not have much spare time so it will take a while but will be good for me too as this is getting more and more complicated.
+
 # Changelog
 I am going to start putting details about my changes I upload here instead of in the commit messages.  This will also be like a diary as to what I was thinking so in the future I can look and see why did some of the stupid things I did.
 

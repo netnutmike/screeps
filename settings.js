@@ -30,6 +30,7 @@ global.containerRepair = 0				// To disable place a 0 in this option
 global.home = "E68N14";
 global.room2 = "E69N14";
 global.room3 = "E67N15";
+global.roomsNames = ["E68N14", "E69N14", "E67N15"];
 
 global.containerRepairPercentage = .8;
 
@@ -97,7 +98,7 @@ global.rooms = {
             	'home'   : AUTOMODE,
             	'remote' : AUTOMODE,
             	'body'   : AUTOMODE,
-            	'source' : ENERGY,
+            	'source' : STORED,
             	'source2': ENERGY
             },
             'guard' : {
