@@ -1,15 +1,13 @@
 # screeps
 I am new to screeps but want to put my code in case it helps anyone else.
 
-This code is as of level 4.  I have looked at others code and adopted it.  This is very much still a work in progress.  I have not yet written any code to advance and take over other rooms.
-
-I just finished a basic defense system with a tower and also defense creeps will be created if a hostile creep enters my room.
+This code started at level 4.  It is interesting to look through how far the code has advanced since the first upload.
 
 There is still much automation yet to create, more than I even know of.
 
 This code is very very ugly, once I get it all figured out I want to re-write it in Classes or at a minimum restructure and make it pretty.
 
-The ultimate goal is to be able to create a room, drop this code and let the room grow on it's with you only needed to put construction items when and where needed.
+The ultimate goal is to be able to create a room, drop this code and let the room grow on it's own with you only needing to put construction items when and where needed.
 
 # TODO List
 For the latest to do list look at the top of the main.js file.  That is where I am adding things as I think about them.  You will also find TODO: in the code.
@@ -21,13 +19,13 @@ I am going to start putting details about my changes I upload here instead of in
 It has been a while since I pushed an update out, and this one is LOADED with new stuff.  I have been playing with Storage, Containers and links and most of the changes in this update are related to that.  There are a few other things as well.
 
 * I modified the remote harvester role so that the energy collected can be delivered to different destinations.  There is more detail down the change log that describes how to change the destination of the harvested energy.
-* 2 new roles that are duplicates of remote harvester were created, they are names remoteHarvester2 and RemoteHarveser3.  They use the same module.  They are truly duplicates.  This was done so that you can remote harvest from more than one remote room.  If you want to harvest the energy from multiple rooms and place it in storage you need multiple remote harvesters.
-* A new role called transferer was created, it's sole purpose is to transfer energy from a link to the storage container.  In my case I build the link and storage with one sqaure between them, this creep sits in between and picks up energy from the link and deposits it into the container.  In the future this creep will also do the oposite and take energy from the storage and send it to another link.  
+* 2 new roles that are duplicates of remote harvester were created, they are named remoteHarvester2 and RemoteHarvester3.  They use the same module.  They are truly duplicates.  This was done so that you can remote harvest from more than one remote room.  If you want to harvest the energy from multiple rooms and place it in storage you need multiple remote harvesters.
+* A new role called transferer was created, it's sole purpose is to transfer energy from a link to the storage container.  In my case I build the link and storage with one square between them, this creep sits in between and picks up energy from the link and deposits it into the container.  In the future this creep will also do the opposite and take energy from the storage and send it to another link.  
 * A new role was created that is the same as the harvester but delivers the energy to the storage container.  This is to help build up the storage container.  This role will be modified in the future to deliver the energy to links and containers as well.  This was just a quick and dirty way to get energy into the storage as I was learning.
 * A new role was created called spawnMaintainer that works similar to the harvester where it adds energy to the spawns and extentions.  However, the source of energy is the Storage container.  Since I have created and implemented this, the reports are showing that the wait is not for energy but for busy.  You have to be careful to make sure the energy spend from the Storage container is less than or equal to the energy that you are putting in.  I am running both the harvesters and the spawnmaintainers.  I do not recommend that you not run the harvesters as they are how the room would recover if the site got attacked and the creeps wiped out.
 * I have modifed the harvesters to look for the STRUCTURE_STORAGE in the event that the Spawns and extentions are all full.  This means that they help to fill up the Storage container when there is nothing to fill up with energy.  In the future I will probably make the second destination configurable.
 * I created a new role called Remote Storage which is like the name says, the same as the storage but pulls the energy from other rooms just like the remote upgrader and remote harvesters do.  This role will be decommissioned because the remote harvester has the ability to deliver energy to multiple destination types including the Storage containers that this role does.  This was created before the remote harvester was modified.
-* I created a new role called eminer (energy miner) that is basically a harvester that can deliver the energy to a set of flexible destinations.  This role also has the ability to repair Containers that have an aging function to them.  This role can replace the original Storage role as it can deliver to Link, Contains and Storage.
+* I created a new role called eminer (energy miner) that is basically a harvester that can deliver the energy to a set of flexible destinations.  This role also has the ability to repair Containers that have an aging function to them.  This role can replace the original Storage role as it can deliver to Links, Containers and Storage.
 * I created a new role called eminer2 which is an exact duplicate of the eminer role mentioned above.  This allows another eminer to have different delivery settings.
 * I am not sure if I mentioned this is a previous change log or not, I cannot find it if I did.  There is a new role called claim.  This role simply goes to a room and claims the controller.
 * I added a large list of constants to the constants.js file.  Most of them are around the new options for the rooms and roles that I have not yet listed.  There are a few that are important for changes that are listed further down the change log:
@@ -50,7 +48,7 @@ global.DEFENSEPOSTURE = 3;
 ```
 
 * I created a new process to manage the links.  As I found out, the links themselves have no logic.  This new process that is in the linkManager.js file is called by the timer.10ticks process and also by roles like remoteHarvester when they deliver energy to a link.  It basically looks at the settings file to determine what to do.  This is the process than manages the transfer of energy.  There is more to come with this but so far it is working good.
-* In the settings.js file there is a new section for setting up how the links work.  It is setup on a per room basis.  The options are "to" which is a number to the index of the link you want to send energy to (if any), "maintain" which is the amount of energy that you want this link to hold (if any) and "from" which is the link you want to pull energy from if the maintain amount is greater than what is available.  I am currently using the index which goes by the order the link was created.  There may be a better way in the future.  It looks like this:
+* In the settings.js file there is a new section for setting up how the links work.  It is setup on a per room basis.  The options are "to" which is a number of the index of the link you want to send energy to (if any), "maintain" which is the amount of energy that you want this link to hold (if any) and "from" which is the link you want to pull energy from if the maintain amount is greater than what is available.  I am currently using the index which goes by the order the link was created.  There may be a better way in the future.  It looks like this:
 ```
 'linkOptions' : {
         		0 : {
@@ -70,7 +68,7 @@ global.DEFENSEPOSTURE = 3;
         		}
         	}
 ```
-* There is a room options setting now for each room.  These are the defaults for the room.  Source and source2 are the default for roles that have a setting for where they get there energy from.  If the role is set to AUTOMODE then this is the value it will use.  Similarly the dest and dest2 are where the role delviers the enrgy to.  Again, these are only used if the dest or dest2 for the role is set to AUTOMODE.  Defensemode is the defense posture for the room.  This is still being implemented but will allow you to set the defense posture for a room.  Like defenseMode, energyMode is still being implemented.  The idea is to allow you to switch an entire room from harvesting energy to do things to using stored energy and putting all of the harvested energy into storage.
+* There is a room options setting now for each room.  These are the defaults for the room.  Source and source2 are the default for roles that have a setting for where they get there energy from.  If the role is set to AUTOMODE then this is the value it will use.  Similarly the dest and dest2 are where the role delivers the enrgy to.  Again, these are only used if the dest or dest2 for the role is set to AUTOMODE.  Defensemode is the defense posture for the room.  This is still being implemented but will allow you to set the defense posture for a room.  Like defenseMode, energyMode is still being implemented.  The idea is to allow you to switch an entire room from harvesting energy to do things to using stored energy and putting all of the harvested energy into storage.
 ```
 'roomOptions' : {
         		'source'      : ENERGY,
@@ -81,7 +79,7 @@ global.DEFENSEPOSTURE = 3;
         		'energyMode'  : ENERGY
         	},
 ```
-* Certain roles now have the ability to set the source of energy and/or the destination of energy.  In those roles there are new options, there are 2 examples below.  For the builder, it is set to first try to pull energy from any stored energy, which is a Storage structure, a Container structure or link.  If it cannot find energy in any of those (or they do not exist) then it will look to see what the room default setting is for source2, which by the example in the previous item above is ENERGY, so it will go start to harvest energy.  For the eminer, it's source is set to the default which again is ENERGY but it also has a dest and dest2.  The first destination it will look for is CONTAINER, if it cannto find any or they are all full then it will look for STORAGE to deliver it's energy to.  If a role has the source or destination options and they are not set (undefined) then the room default it used.
+* Certain roles now have the ability to set the source of energy and/or the destination of energy.  In those roles there are new options, there are 2 examples below.  For the builder, it is set to first try to pull energy from any stored energy, which is a Storage structure, a Container structure or link.  If it cannot find energy in any of those (or they do not exist) then it will look to see what the room default setting is for source2, which by the example in the previous item above is ENERGY, so it will go start to harvest energy.  For the eminer, it's source is set to the default which again is ENERGY but it also has a dest and dest2.  The first destination it will look for is CONTAINER, if it cannot find any or they are all full then it will look for STORAGE to deliver it's energy to.  If a role has the source or destination options and they are not set (undefined) then the room default it used.
 ```
 'builder' : {
             	'build'  : 2,
@@ -109,7 +107,7 @@ global.wallRepair = 0;					// To disable place a 0 in this option
 global.roadRepair = 0;					// To disable place a 0 in this option
 global.containerRepair = 0				// To disable place a 0 in this option
 ```
-* I created an self suicide routine.  So far it is only applied to roles that either leave the room or are frequently on the edge of the room where they can get attacked.  There is still more to come with this.  For now, it changes the role to suicide so that it is considered dead.  But if it is under attack, is it better to let it stay around the the hostile creep has something to target?  Still thining this one out.
+* I created an self suicide routine.  So far it is only applied to roles that either leave the room or are frequently on the edge of the room where they can get attacked.  There is still more to come with this.  For now, it changes the role to suicide so that it is considered dead.  But if it is under attack, is it better to let it stay around so the hostile creep has something to target?  Still thinking this one out.
 * When new rooms were created, the default room mode was not set, this caused errors.  This became very obvious when I setup a local server to test on and the first room was created.  To solve the problem, the creeps.manager now checks to see if there is a mode set and if not, puts it into newroom mode.
 * A few new functions were added to the roomsManager to accomodate the new options for links, these new functions are getLinkTo, getLinkMaintain and getLinkFrom.
 * The getMemorySettings functions in roomsManager has been modified to add the new source and dest options.
