@@ -1,23 +1,15 @@
-var roleHarvester = {
+var roleStorage = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
 	   
         var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (((structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN )  &&
-                            structure.energy < structure.energyCapacity) )
+                    return (structure.structureType == STRUCTURE_STORAGE ) //&&
+                        //structure.energy < structure.energyCapacity;
                 }
         });
-        
-        if (targets.length == 0) {
-        	 var targets = creep.room.find(FIND_STRUCTURES, {
-	                 filter: (structure) => {
-	                     return (structure.structureType == STRUCTURE_STORAGE)
-	                 }
-	         });
-        }
-        
+        //console.log(targets.length);
         if(targets.length > 0) {
             //console.log('Creep ' + creep.name + ' delivering:' + creep.memory.delivering + ' on board:' + creep.carry.energy);
             
@@ -28,18 +20,9 @@ var roleHarvester = {
             			creep.memory.source = source.id;
             	}
     	        
-            	if (creep.memory.source != undefined && creep.memory.source != "") {
-            		var successcode = creep.harvest(Game.getObjectById(creep.memory.source));
-        			//console.log(successcode);
-        			if(successcode == ERR_NOT_IN_RANGE) {
-                    	//console.log("4");
+            	if (creep.memory.source != undefined && creep.memory.source != "")
+                    if(creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) 
                         creep.moveTo(Game.getObjectById(creep.memory.source));
-                    } else if (successcode == ERR_INVALID_TARGET) {
-                    	//console.log("5");
-                    	creep.memory.source = "";
-                    }
-            	}
-                    
                 
                 if(creep.carry.energy == creep.carryCapacity) {
                     creep.memory.delivering = true;
@@ -47,9 +30,7 @@ var roleHarvester = {
                 }
             }
             else {
-            	var successcode = creep.transfer(targets[0], RESOURCE_ENERGY);
-            	//console.log(successcode);
-                if(successcode == ERR_NOT_IN_RANGE) {
+                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
                 }
                 
@@ -61,4 +42,4 @@ var roleHarvester = {
 	}
 };
 
-module.exports = roleHarvester;
+module.exports = roleStorage;

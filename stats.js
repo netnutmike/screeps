@@ -53,6 +53,7 @@ var stats = {
             	msg += "       lastLevel: " + room.memory.lastLevel + "\n";
             	msg += "       rampartRepairValue: " + room.memory.rampartRepairValue + "\n";
             	msg += "       emergencyRepairMode: " + room.memory.emergencyRepairMode + "\n";
+            	msg += "       emergencyRepairCount: " + room.memory.emergencyRepairCount + "\n";
             	msg += "       wallRepairValue: " + room.memory.wallRepairValue + "\n";
             	
             	alerts.newAlert(1, msg);

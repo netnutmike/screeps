@@ -20,8 +20,10 @@ var roleDefender = {
             var halfBroken = Game.rooms[roomName].find(FIND_STRUCTURES);
 			var toRepair = [ ];
 			for(var index in halfBroken)
-				if((((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5) && halfBroken[index].structureType != 'constructedWall' && halfBroken[index].structureType != 'road' && halfBroken[index].structureType != 'rampart' && halfBroken[index].structureType != 'container' ) ||
-				(((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.0002) && halfBroken[index].structureType == 'rampart') )
+				if( ( ((halfBroken[index].hits / halfBroken[index].hitsMax) < wallRepair) && halfBroken[index].structureType == 'constructedWall') ||
+						( ((halfBroken[index].hits / halfBroken[index].hitsMax) < roadRepair) && halfBroken[index].structureType == 'road') ||
+						( ((halfBroken[index].hits / halfBroken[index].hitsMax) < containerRepair) && halfBroken[index].structureType == 'container')  ||
+						( ((halfBroken[index].hits / halfBroken[index].hitsMax) < rampartRepair) && halfBroken[index].structureType == 'rampart') )
 					toRepair.push(halfBroken[index]);
 					
 			var towers = Game.rooms[roomName].find(
@@ -37,8 +39,12 @@ var roleDefender = {
     },
     
     enemiesInRoom: function(roomName) {
+    	//console.log(roomName);
+    	if (Game.rooms[roomName] == undefined)
+    		return false;
+    	
         var hostiles = Game.rooms[roomName].find(FIND_HOSTILE_CREEPS);
-        
+        //console.log("enemies in room: " + roomName + " - " + hostiles.length);
         if(hostiles.length > 0) {
             return true;
         } else {

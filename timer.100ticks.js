@@ -59,7 +59,8 @@ var timer100Ticks = {
                      		break;
                 		}
                 	}
-                	}
+                }
+                //console.log("room: " + room.name + "  " + room.memory.emergencyRepairMode + "-" + room.memory.emergencyRepairCount);
             }
             
             //stats.run();
@@ -69,7 +70,7 @@ var timer100Ticks = {
             
             
             for(var tm in reportRunHours) {
-            	if (d.getHours() == reportRunHours[tm] && d.getMinutes() >= 0 && d.getMinutes() <= 16) {
+            	if (d.getHours() == reportRunHours[tm] && d.getMinutes() >= 0 && d.getMinutes() <= 8) {
                 	stats.run();
                 }
             }

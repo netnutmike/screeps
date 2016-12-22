@@ -10,6 +10,7 @@ var roleGuard = {
             
            creep.moveTo(targets[0]);
            creep.attack(targets[0]);
+           creep.rangedAttack(targets[0]);
         }
 	}
 };

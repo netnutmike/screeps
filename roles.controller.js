@@ -12,7 +12,12 @@ var roleGuard = require('role.guard');
 var roleAttacker = require('role.attacker');
 var roleClaimer = require('role.claim');
 var roleNewUpgrader = require('role.newUpgrader');
-var towerRepair = require('role.towerRepair')
+var towerRepair = require('role.towerRepair');
+var roleStorage = require('role.storage');
+var roleRemoteStorage = require('role.remoteStorage');
+var roleTransferer = require('role.transferer');
+var roleEMiner = require('role.eminer');
+var roleSpawnMaint = require('role.spawnMaintainer');
 
 var rolesController = {
     
@@ -26,6 +31,8 @@ var rolesController = {
             		roleHarvester.run(creep);
             		break;
             	case 'remoteHarvester':
+            	case 'remoteHarvester2':
+            	case 'remoteHarvester3':
             		roleRemoteHarvester.run(creep);
             		break;
             	case 'upgrader':
@@ -49,8 +56,10 @@ var rolesController = {
             		roleGuard.run(creep);
             		break;
             	case 'attacker':
+            	case 'attackers':
             	case 'attacekr':
             		roleAttacker.run(creep);
+            		roleAttacker.attack(creep);
             		break;
             	case 'repairer':
             	case 'repairer2':
@@ -73,7 +82,22 @@ var rolesController = {
             	case 'towerRepair':
             		towerRepair.run(creep);
             		break;
-            		
+            	case 'storage':
+            		roleStorage.run(creep);
+            		break;
+            	case 'remoteStorage':
+            		roleRemoteStorage.run(creep);
+            		break;
+            	case 'transfer':
+            		roleTransferer.run(creep);
+            		break;
+            	case 'eminer':
+            	case 'eminer2':
+            		roleEMiner.run(creep);
+            		break;
+            	case 'spawnMaint':
+            		roleSpawnMaint.run(creep);
+            		break;
             }
         }
     }

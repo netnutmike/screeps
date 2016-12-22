@@ -17,24 +17,123 @@ For the latest to do list look at the top of the main.js file.  That is where I 
 # Changelog
 I am going to start putting details about my changes I upload here instead of in the commit messages.  This will also be like a diary as to what I was thinking so in the future I can look and see why did some of the stupid things I did.
 
-## 12-09-2016
-Today's changelog starts out with the anatomy of an attack and a short story.  This will explain the changes in the change log for today.
+## 12-22-2016
+It has been a while since I pushed an update out, and this one is LOADED with new stuff.  I have been playing with Storage, Containers and links and most of the changes in this update are related to that.  There are a few other things as well.
 
-I have been very focussed on automating the process of getting to the next level, building and growing.  And in the last change list I made some adjustments to the priorities of what creep gets built first.  For example, primary is the local harvesters so they get energy and you can build more, then I had the remote harvesters to get even more energy faster.  Because of some previous repair issues, repairers are next, then upgraders and then remote upgraders and then finally builders.
+* I modified the remote harvester role so that the energy collected can be delivered to different destinations.  There is more detail down the change log that describes how to change the destination of the harvested energy.
+* 2 new roles that are duplicates of remote harvester were created, they are names remoteHarvester2 and RemoteHarveser3.  They use the same module.  They are truly duplicates.  This was done so that you can remote harvest from more than one remote room.  If you want to harvest the energy from multiple rooms and place it in storage you need multiple remote harvesters.
+* A new role called transferer was created, it's sole purpose is to transfer energy from a link to the storage container.  In my case I build the link and storage with one sqaure between them, this creep sits in between and picks up energy from the link and deposits it into the container.  In the future this creep will also do the oposite and take energy from the storage and send it to another link.  
+* A new role was created that is the same as the harvester but delivers the energy to the storage container.  This is to help build up the storage container.  This role will be modified in the future to deliver the energy to links and containers as well.  This was just a quick and dirty way to get energy into the storage as I was learning.
+* A new role was created called spawnMaintainer that works similar to the harvester where it adds energy to the spawns and extentions.  However, the source of energy is the Storage container.  Since I have created and implemented this, the reports are showing that the wait is not for energy but for busy.  You have to be careful to make sure the energy spend from the Storage container is less than or equal to the energy that you are putting in.  I am running both the harvesters and the spawnmaintainers.  I do not recommend that you not run the harvesters as they are how the room would recover if the site got attacked and the creeps wiped out.
+* I have modifed the harvesters to look for the STRUCTURE_STORAGE in the event that the Spawns and extentions are all full.  This means that they help to fill up the Storage container when there is nothing to fill up with energy.  In the future I will probably make the second destination configurable.
+* I created a new role called Remote Storage which is like the name says, the same as the storage but pulls the energy from other rooms just like the remote upgrader and remote harvesters do.  This role will be decommissioned because the remote harvester has the ability to deliver energy to multiple destination types including the Storage containers that this role does.  This was created before the remote harvester was modified.
+* I created a new role called eminer (energy miner) that is basically a harvester that can deliver the energy to a set of flexible destinations.  This role also has the ability to repair Containers that have an aging function to them.  This role can replace the original Storage role as it can deliver to Link, Contains and Storage.
+* I created a new role called eminer2 which is an exact duplicate of the eminer role mentioned above.  This allows another eminer to have different delivery settings.
+* I am not sure if I mentioned this is a previous change log or not, I cannot find it if I did.  There is a new role called claim.  This role simply goes to a room and claims the controller.
+* I added a large list of constants to the constants.js file.  Most of them are around the new options for the rooms and roles that I have not yet listed.  There are a few that are important for changes that are listed further down the change log:
+```
+// Destination and Source constants
+//  AUTOMODE uses default
+global.SPAWN = 1;						// This goes to spawn or Extentions
+global.LINKSTORAGE = 2;					// This goes to either a link or storage whichever is closest
+global.STORAGE = 3;						// This goes only to the Storage Structure
+global.LINK = 4;						// This goes only to the Link Structure
+global.ENERGY = 5;
+global.STORED = 6;						// Any Stored Energy
+global.STOREDANDLINKS = 7;				// Any stored energy and lnks
+global.CONTAINER = 8;					// Containers
+
+//Defense Modes
+global.ONDEMAND = 1;
+global.ATTHEREADY = 2;
+global.DEFENSEPOSTURE = 3;
+```
+
+* I created a new process to manage the links.  As I found out, the links themselves have no logic.  This new process that is in the linkManager.js file is called by the timer.10ticks process and also by roles like remoteHarvester when they deliver energy to a link.  It basically looks at the settings file to determine what to do.  This is the process than manages the transfer of energy.  There is more to come with this but so far it is working good.
+* In the settings.js file there is a new section for setting up how the links work.  It is setup on a per room basis.  The options are "to" which is a number to the index of the link you want to send energy to (if any), "maintain" which is the amount of energy that you want this link to hold (if any) and "from" which is the link you want to pull energy from if the maintain amount is greater than what is available.  I am currently using the index which goes by the order the link was created.  There may be a better way in the future.  It looks like this:
+```
+'linkOptions' : {
+        		0 : {
+        			'to'       : NONE,
+        			'maintain' : 0,
+        			'from'     : NONE
+        		},
+        		1 : {
+        			'to'       : 0,
+        			'maintain' : 0,
+        			'from'     : NONE
+        		},
+        		2 : {
+        			'to'       : 0,
+        			'maintain' : 0,
+        			'from'     : NONE
+        		}
+        	}
+```
+* There is a room options setting now for each room.  These are the defaults for the room.  Source and source2 are the default for roles that have a setting for where they get there energy from.  If the role is set to AUTOMODE then this is the value it will use.  Similarly the dest and dest2 are where the role delviers the enrgy to.  Again, these are only used if the dest or dest2 for the role is set to AUTOMODE.  Defensemode is the defense posture for the room.  This is still being implemented but will allow you to set the defense posture for a room.  Like defenseMode, energyMode is still being implemented.  The idea is to allow you to switch an entire room from harvesting energy to do things to using stored energy and putting all of the harvested energy into storage.
+```
+'roomOptions' : {
+        		'source'      : ENERGY,
+        		'source2'     : ENERGY,
+        		'dest'        : SPAWN,
+        		'dest2'       : SPAWN,
+        		'defenseMode' : ONDEMAND,
+        		'energyMode'  : ENERGY
+        	},
+```
+* Certain roles now have the ability to set the source of energy and/or the destination of energy.  In those roles there are new options, there are 2 examples below.  For the builder, it is set to first try to pull energy from any stored energy, which is a Storage structure, a Container structure or link.  If it cannot find energy in any of those (or they do not exist) then it will look to see what the room default setting is for source2, which by the example in the previous item above is ENERGY, so it will go start to harvest energy.  For the eminer, it's source is set to the default which again is ENERGY but it also has a dest and dest2.  The first destination it will look for is CONTAINER, if it cannto find any or they are all full then it will look for STORAGE to deliver it's energy to.  If a role has the source or destination options and they are not set (undefined) then the room default it used.
+```
+'builder' : {
+            	'build'  : 2,
+            	'home'   : AUTOMODE,
+            	'remote' : AUTOMODE,
+            	'body'   : AUTOMODE,
+            	'source' : STORED,
+            	'source2': AUTOMODE
+            },
+'eminer' : {
+            	'build'  : 3,
+            	'home'   : AUTOMODE,
+            	'remote' : AUTOMODE,
+            	'body'   : AUTOMODE,
+            	'source' : AUTOMODE,
+            	'dest'   : CONTAINER,
+            	'dest2'  : STORAGE
+            }
+```
+* Towers can now repair ramparts, roads and walls.  Previously the towers could repair ramparts but it was at a fixed percentage.  This is because ramparts age quickly.  I was looking at other rooms and seeing how others are doing things and I saw some rooms that had a storage and tower right next to each other.  They were using the tower to make road, rampart and wall repairs.  That could be more efficient than having a creep go do all of that.  So I modified the tower to repair these 3 items.  I have not experimented yet to compare the efficiency.  There are options in the settings for this now.  Below is an example.  In this example ramparts will be repaired up to .03%.  I have walls, roads and containers set to not repair at all.  This may eventually get moved to a room by room setting.
+```
+// Tower Modes  (They always defend)
+global.rampartRepair = .0003			// To disable place a 0 in this option
+global.wallRepair = 0;					// To disable place a 0 in this option
+global.roadRepair = 0;					// To disable place a 0 in this option
+global.containerRepair = 0				// To disable place a 0 in this option
+```
+* I created an self suicide routine.  So far it is only applied to roles that either leave the room or are frequently on the edge of the room where they can get attacked.  There is still more to come with this.  For now, it changes the role to suicide so that it is considered dead.  But if it is under attack, is it better to let it stay around the the hostile creep has something to target?  Still thining this one out.
+* When new rooms were created, the default room mode was not set, this caused errors.  This became very obvious when I setup a local server to test on and the first room was created.  To solve the problem, the creeps.manager now checks to see if there is a mode set and if not, puts it into newroom mode.
+* A few new functions were added to the roomsManager to accomodate the new options for links, these new functions are getLinkTo, getLinkMaintain and getLinkFrom.
+* The getMemorySettings functions in roomsManager has been modified to add the new source and dest options.
+* Minor modifications to the stats report that is emailed.  There will be some more modifications coming up soon as well.
+
+
+## 12-09-2016
+Today's changelog starts out with the anatomy of an attack and a short story.  These will explain the changes in the change log for today.
+
+I have been very focussed on automating the process of getting to the next level, building and growing.  And in the last change list I made some adjustments to the priorities of what creep get's built first.  For example, primary is the local havesters so they get energy and you can build more, then I had the remote havesters to get even more energy faster.  Because of some previous repair issues, repairers are next, then upgraders and then remote upgraders and then finally builders.
 
 I started to get attacked by the RPC with 2 invaders while I was sleeping, when I got up and saw in my email that my room had been under attack for almost 3 hours I went immediately to the computer.  They had not broken through the walls but had destroyed a few roads outside the wall.  But my tower was empty of energy and there was very little energy and hardly any creeps.  I watched for a while to see what was happening and in a few minutes took what might be considered the cheaters way out and put the room into safe mode.  I have never used a safe mode after the initial one that you get when you create the room.
 
-I determined the following problems.  First, I have been relying on my regular harvesters to keep the tower energy filled.  It is just one of the things they find and since it was built in level 3, after the spawn and the first 10 exentions are full they go fill it up until it is full then go to extention number 11 and keep going.  This is a flaw because during that attack it emptied quickly because there were 2 invaders.  My defenders require energy from about 13 of the extentions.  So exentions 11 - 13 were never getting filled, so no defenders.  On top of that, I was sending remote harvesters to their death because the invaders would take them out as soon as they got close.  I was stuck in a constant loop of building remote harvesters and trying to keep the tower powered up.  When the harvesters would catch up enough for the remote havesters they would put a little energy into the tower and it would fight back for a litle bit and run out again.  The one invader was basically dead and the other one was injured pretty good so I think eventually it would have worked itself out, but not ideal.
+I determined the following problems.  First, I have been relying on my regular harvesters to keep the tower energy filled.  It is just one of the things they find and since it was built in level 3, after the spawn and the fist 10 exentions are full they go fill it up until it is full then go to extention number 11 and keep going.  This is a flaw because during that attack it emptied quickly because there were 2 invaders.  My defenders require energy from about 13 of the extentions.  So exentions 11 - 13 were never getting filled.  On top of that, I was sending remote harvesters to their death because the invaders would take them out as soon as they got close.  I was stuck in a constant loop of building remote harvesters and trying to keep the tower powered up.  When the harvesters would catch up enough for the remote havesters they would put a little energy into the tower and it would fight back for a litle bit and run out again.  The one invader was basically dead and the other one was injured pretty good so I think eventually it would have worked itself out, but not ideal.
 
 Here are the changes that have been made to hopefully make the situation better during the next attack:
 
-* I changed the build priory in creeps.manager.  Now, all creeps that work within the room have priority over any creep that leaves the room to do it's work.  That means that the room should stabilize faster especially when there is an attack situation.  It might take longer to get the remote stuff working and the energy will grow slower but while in an attack, operations inside the room will continue.
-* For all of the creeps that are built and sent to another room, before I spawn a new creep, I first check to see if there are hostiles in the room, if there are then the creep is not spawned because I could be sending them to their death which is a waste of energy and time.
-* I created a new role called towerRepair.  This creep will only spawn if the tower is not at 100% capacity.  The build priority is just after the defenders and they are just after the harvesters so it is high on the list.  If this creep finishes getting the tower to 100%, it will revert back to the job of a regular harvester, might as well not waste them if they get done quickly.
+* I changed the build priory in creeps.manager.  Now, all creeps that work within the room have priority over any creep that leaves the room to do it's work.  That means that the room shoud stabilize faster exspecially when there is an attack situation.  It might take longer to get the remote stuff working and the energy will grow slower but while in an attack, operations inside the room will continue.
+* For all of the creeps that are built and sent to another room, before I spawn a new creep, I first check to see if there are hostiles in the room, if there are then the creep is not spawned because I could be sending them to their death witch is a waste of energy and time.
+* I created a new role called towerRepair.  This creep will only spawn if the tower is not at 100% capacity.  The build priority is just after teh defenders and they are just after the harvesters so it is high on the list.  If this creep finishes getting the tower to 100%, it will revert back to tehjob of a regular havester, might as well not waste them if they get done quickly.
 * Because of the new role above, the harvesters have been modified to only provide energy to spawns and extentions.
-* I changed how creeps.manager outputs new builds of creeps.  It used to be a console.log for every creep type in the if then else.  I now have added jobTitle and created one alert after all of the if statements.  It is using the new alert routine so output can be adjusted to the console and email.  I also setup an alert that is just one level short of debugging that will output when it wants to spawn something but cannot.  My long term goal is to eventually keep stats on an unable to build situation.  That can help make changes to accomodate the number of different roles.  For example, if you are frequently short on energy you can make adjustments to build less expensive creeps, fewer of them or maybe add a remote harvester.
+* I changed how creeps.manager outputs new builds of creeps.  It used to be a console.log for every creep type in the if then else.  I now have added jobTitle and created one alert after all of the if statements.  It is using the new alert routine so output can be adjust to the console and email.  I also setup an alert that is just one level short of debugging that will output when it wants to spawn something but cannot.  My long term goal is to eventually keep stats on an unable to build situation.  That can help make changes to accomodate the number of different roles.  For example, if you are frequently short on energy you can make adjustments to build less expensive creeps, fewer of them or maybe add a remote harvester.
 * I added to the outputs section mentioned above, counters so that when the stats report runs it can provide details about how much wait time there is to build and the reason for the wait time.  This can be useful to make adjustments to the game setings for that room.  I have not yet modifed the stat emails to do the calculations.
-* I modifed the stats report to provide stats about the wait time as mentioned above.  The stats are per room so you can review how your rooms are working.
+* I modifed the stats report to provide stats about the wait time as mentioned above.  The stats are per room so you can reivew how your rooms are working.
 * When I first created the stat reports I had them sending out twice a day at 8 am and 8pm.  That is 1am and 1pm UTC.  These values were hard coded into the timer routine.  Now there is an option in the settings file that allows you to add as many hours to an array that you want the report to run.  If you want it once, great.  Want it every hour you are awake, fine too.  The hours are still UTC as that is the clock that the screeps server is set to.
 * Here is an example of what one of the stat reports looks like for my 2 rooms:
 ```

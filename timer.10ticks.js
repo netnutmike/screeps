@@ -1,4 +1,6 @@
 
+var linkMaint = require('linkManager');
+
 var timer10Ticks = {
     
     run: function()
@@ -12,6 +14,7 @@ var timer10Ticks = {
         	Memory.tenTicks = Game.time + 10;
         	//console.log("10 tick timer just fired");
         	
+        	linkMaint.run();
         	}
     }
 };

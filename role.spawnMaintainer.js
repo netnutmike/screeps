@@ -1,45 +1,39 @@
-var roleHarvester = {
+var roleSpawnMaintainer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
 	   
         var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (((structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN )  &&
-                            structure.energy < structure.energyCapacity) )
+                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN ) &&
+                        structure.energy < structure.energyCapacity;
                 }
         });
-        
-        if (targets.length == 0) {
-        	 var targets = creep.room.find(FIND_STRUCTURES, {
-	                 filter: (structure) => {
-	                     return (structure.structureType == STRUCTURE_STORAGE)
-	                 }
-	         });
-        }
         
         if(targets.length > 0) {
             //console.log('Creep ' + creep.name + ' delivering:' + creep.memory.delivering + ' on board:' + creep.carry.energy);
             
             if(creep.memory.delivering != true) {
             	if (creep.memory.source == undefined || creep.memory.source == "") {
-            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		//console.log("1");
+            		var source = creep.room.find(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return (structure.structureType == STRUCTURE_STORAGE )
+                        }
+            		});
+            		source = creep.pos.findClosestByPath(source);
             		if (source != null)
             			creep.memory.source = source.id;
             	}
     	        
+            	//console.log("2");
             	if (creep.memory.source != undefined && creep.memory.source != "") {
-            		var successcode = creep.harvest(Game.getObjectById(creep.memory.source));
-        			//console.log(successcode);
-        			if(successcode == ERR_NOT_IN_RANGE) {
-                    	//console.log("4");
+            		var statuscode = creep.withdraw(Game.getObjectById(creep.memory.source), RESOURCE_ENERGY);
+            		//console.log(statuscode);
+                    if(statuscode == ERR_NOT_IN_RANGE) 
                         creep.moveTo(Game.getObjectById(creep.memory.source));
-                    } else if (successcode == ERR_INVALID_TARGET) {
-                    	//console.log("5");
-                    	creep.memory.source = "";
-                    }
-            	}
                     
+            	}
                 
                 if(creep.carry.energy == creep.carryCapacity) {
                     creep.memory.delivering = true;
@@ -47,9 +41,7 @@ var roleHarvester = {
                 }
             }
             else {
-            	var successcode = creep.transfer(targets[0], RESOURCE_ENERGY);
-            	//console.log(successcode);
-                if(successcode == ERR_NOT_IN_RANGE) {
+                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
                 }
                 
@@ -61,4 +53,4 @@ var roleHarvester = {
 	}
 };
 
-module.exports = roleHarvester;
+module.exports = roleSpawnMaintainer;

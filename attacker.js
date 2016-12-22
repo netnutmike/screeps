@@ -83,7 +83,7 @@ heal: function(creep) {
 run: function(creep) {
   if (creep.pos.roomName == creep.memory.remote) {
     creep.moveTo(Game.flags[creep.memory.flag]);
-  } else if(!creep.memory.flag && creep.room.name != creep.memory.targetRoom) {
+  } else if( creep.room.name != creep.memory.remote) {
     var exitDir = Game.map.findExit(creep.room, creep.memory.remote);
     var exit = creep.pos.findClosestByRange(exitDir);
     creep.moveTo(exit);

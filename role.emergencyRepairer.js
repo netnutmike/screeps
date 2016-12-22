@@ -1,3 +1,5 @@
+var alerts = require('alerts');
+
 var roleEmergencyRepairer = {
 
     //var testvar = "test";
@@ -15,10 +17,10 @@ var roleEmergencyRepairer = {
 	        creep.say('ERepairing ' + Memory.emergencyRepairCount);
 	    }
 	    
-	    if (Memory.emergencyRepairMode == 999)
+	    if (creep.room.memory.emergencyRepairMode == 999)
 	    	var repairPercentage = fixWhenIdlePercentage;
 	    else
-	    	var repairPercentage = (Memory.emergencyRepairMode / 100);
+	    	var repairPercentage = (creep.room.memory.emergencyRepairMode / 100);
 	    
 	    
 	    //console.log("Repair percentage: " + repairPercentage);
@@ -54,7 +56,7 @@ var roleEmergencyRepairer = {
 				    	toRepair.push(halfBroken[index]);
             	}
             	
-            	Memory.emergencyRepairCount = toRepair.length;
+            	creep.room.memory.emergencyRepairCount = toRepair.length;
             } else {
 	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
 	        }
@@ -78,19 +80,19 @@ var roleEmergencyRepairer = {
 				else 
 				    creep.memory.currentRepair = "";
 
-				Memory.emergencyRepairWaitCounter = 0;
+				creep.room.memory.emergencyRepairWaitCounter = 0;
 			} else {
 				//nothing to repair, wait for 10 ticks to make sure, then increment the base fix level in memory by increase amount
-				Memory.emergencyRepairWaitCounter = Memory.emergencyRepairWaitCounter + 1;
+				creep.room.memory.emergencyRepairWaitCounter = 	creep.room.memory.emergencyRepairWaitCounter + 1;
 				//console.log("+1");
-				if (Memory.emergencyRepairWaitCounter >= 4) {
-					Memory.emergencyRepairMode = Memory.emergencyRepairMode + 10;
-					if (Memory.emergencyRepairMode > 100)
-						Memory.emergencyRepairMode = 100;
-					creep.room.memory.emergencyRepairMode = Memory.emergencyRepairMode;
-					Game.notify("Increasing the Emergency repair value by 10 making it " + Memory.emergencyRepairMode);
-					console.log("*** Increasing the Emergency repair value by 10 making it " + Memory.emergencyRepairMode);
-					Memory.emergencyRepairWaitCounter = 0;
+				if (creep.room.memory.emergencyRepairWaitCounter >= 4) {
+					creep.room.memory.emergencyRepairMode = creep.room.memory.emergencyRepairMode + 10;
+					if (creep.room.memory.emergencyRepairMode > 100)
+						creep.room.memory.emergencyRepairMode = 100;
+					
+					alerts.newAlert(2,"Increasing the Emergency repair value in room " + creep.room.name + " by 10 making it " + creep.room.memory.emergencyRepairMode);
+					//console.log("Increasing the Emergency repair value in room " + creep.room.name + " by 10 making it " + creep.room.memory.emergencyRepairMode);
+					creep.room.memory.emergencyRepairWaitCounter = 0;
 				}
 			}
 			

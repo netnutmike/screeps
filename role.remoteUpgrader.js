@@ -1,3 +1,5 @@
+var alerts = require('alerts');
+
 var roleRemoteUpgrader = {
 
     /** @param {Creep} creep **/
@@ -40,6 +42,12 @@ var roleRemoteUpgrader = {
                 var exit = creep.room.findExitTo(creep.memory.remote);
                 creep.moveTo(creep.pos.findClosestByRange(exit));
             }
+        }
+	    
+	    if (creep.getActiveBodyparts(WORK)<1 || creep.getActiveBodyparts(MOVE)<1 || creep.getActiveBodyparts(CARRY)<1) {
+	    	alerts.newAlert(2,"Creep " + creep.name + " in room " + creep.room.name + " who was a " + creep.memory.role + " committed suicide");
+        	creep.say('Goodbye|Cruel|World');
+        	creep.memory.role="Suicide";
         }
 	}
 };
