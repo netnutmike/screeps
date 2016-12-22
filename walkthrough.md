@@ -57,11 +57,16 @@ And make them look like this:
             }
 ```
 
-Once that is complete, save the file.  Copy all of the files in the directory where you placed the scripts.  In screeps go to the script tab and click the Open local folder option.  You should now have a new window with the contents of the current scripts which should be empty or maybe main.  Paste in the scripts you just copied.
+Once that is complete, save the file.  Highlight and copy all of the files in the directory where you placed the scripts.  In screeps go to the script tab and click the Open local folder option.  You should now have a new window with the contents of the current scripts which should be empty or maybe main.  Paste in the scripts you just copied.
 
-Immediately your spawn should build a harvester, it will continue to build 3 harvesters and then upgraders.  The first level is only 200 energies to get to level 2.  It is generally very quick.  Once the room enters level 2, you should get an email and notice in the console that the room has entered new room mode.  At this point, you need to build the 5 available containers.
+## Level 1
 
-be selective where you put these, most people put them close to the spawn or in between the spawn and energy source.  Within 100 game ticks of placing the first extention, the mode will change to build mode.  This will spawn additional builders but will also lower the count of upgraders.
+Immediately your spawn should build a harvester, it will continue to build 3 harvesters and then upgraders.  The first level is only 200 energies to get to level 2.  It is generally very quick.  
+
+## Level 2
+Once the room enters level 2, you should get an email and notice in the console that the room has entered new room mode.  At this point, you need to build the 5 available containers.
+
+Be selective where you put these, most people put them close to the spawn or in between the spawn and energy source.  Within 100 game ticks of placing the first extention, the mode will change to build mode.  This will spawn additional builders but will also lower the count of upgraders.
 
 Once construction is complete, the room will move into grow mode.  In this mode you have one builder (if needed) and more upgraders.  If the goal is to grow quick then, do not construct roads until the room has moved into grow mode.
 
@@ -75,7 +80,11 @@ In level 2 grow mode, I recommend that you build walls across every gateway to a
 
 In all levels and modes, builders are only built if needed.  The same is true with rampart repairers, wall repairers, etc.  If they are not needed there is no need to waste the energy to build them.  This is good to know because it can help you decide if you want to build something now after the buildig is done or wait until your next build mode.
 
-At this point to sit back and wait until the next level.  Once you reach level 3 the room will go into new room mode and will be waiting for you to place construction.  Once you place construction the room will enter into build mode.  You want to place the 5 new extentions and the tower.  Tower placement is important.  It can reach the entire room but losing energy the further it goes.  I typically try to place the tower in the middle somewhere.  After your first room you will have a better idea where to place it for your next room.  You are constantly learning with this game.
+At this point to sit back and wait until the next level.  
+
+## Level 3
+
+Once you reach level 3 the room will go into new room mode and will be waiting for you to place construction.  Once you place construction the room will enter into build mode.  You want to place the 5 new extentions and the tower.  Tower placement is important.  It can reach the entire room but losing energy the further it goes.  I typically try to place the tower in the middle somewhere.  After your first room you will have a better idea where to place it for your next room.  You are constantly learning with this game.
 
 As mentioned above, you can place more roads now or wait until the grow mode.  The more work there is to do for the build the longer it will take to get into grow mode.
 
@@ -92,6 +101,8 @@ Each level takes more energy to advance to the next level, so sit back and be pa
 One thing to note, this game moves very slow.  Making a change in settings may take 1500 game ticks to be totally realized.  IF you decrease the number of upgraders for example because you are not getting enough energy, the number of upgraders does not change until they expire and go away which could be 1500 ticks if they were just spawned.  So make small changes and keep an eye on it.
 
 The AUTOMODE numbers are conservative so that everthing builds safely.  And those numbers are being adjust frequenctly as I build a new set of rooms.
+
+## Level 4
 
 Once the room enters level 4, it again will go into new room mode.  Place the extentions first, then place the Storage.  Placement of this is strategic.  This can (and should) be used in future levels to feed the spawns, extentions, tower repair and other workers including upgraders.  There is probably not a perfect spot to handle all of that.  And in the next level we will be building links to cover the ones that we cannot.  Pick a place where you think it will work best.  This is one of those items that you will learn as you go.
 
@@ -142,3 +153,6 @@ If you are finding that you really do not need the remote harvester or you have 
             	'dest'   : STORAGE
             }
 ```
+
+## Lvel 5
+
