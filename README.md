@@ -22,13 +22,13 @@ I am going to start creating a wiki in my spare time that details all of the rol
 I am going to start putting details about my changes I upload here instead of in the commit messages.  This will also be like a diary as to what I was thinking so in the future I can look and see why did some of the stupid things I did.
 
 ## 1-25-2017
-It has bene a long time since I put an update out.  So logn I am not sure I can remember everything that has changed.
+It has been a long time since I put an update out.  So long I am not sure I can remember everything that has changed.
 
 * There are 3 new roles called reserve, reserve2 and reserve3.  They all will go to a room and reserve the controller of a room.  All the roles are exactly the same, that way you can be reserving 3 rooms per one of your rooms.
 * role.attacker has been changed.  It does more now than before.  It looks for dangerous creeps first, then buildings, controllers, etc.  Then the innocent creeps.
 * I can now be building 2 creeps at the same time in one room.  It will build on every available spawn in a room now.
 * I removed the defender role from creeps.manager.  This is beacause of the next change and wanting to do the defender role to run with every clock tick.
-* I have setup the main routine to call the creeps.manager process once every 5 game ticks.  I started to get excessive CPU errors and investigating what was doing it, the creeps manager doing all of the searches is what was causing the spikes.  Now the CU bucket can build up for 4 of the game ticks.
+* I have setup the main routine to call the creeps.manager process once every 5 game ticks.  I started to get excessive CPU errors and investigating what was doing it, the creeps manager doing all of the searches is what was causing the spikes.  Now the CPU bucket can build up for 4 of the game ticks.
 * Attackers can now heal temselves if the have the healing body parts.
 
 ## 12-22-2016
