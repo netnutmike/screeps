@@ -3,6 +3,8 @@ var roleTransferer = {
     /** @param {Creep} creep **/
     run: function(creep) {
 	   
+    	creep.room.memory.transferer = creep.name;
+    	
         var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_STORAGE ) 
@@ -17,7 +19,7 @@ var roleTransferer = {
             	if (creep.memory.source == undefined || creep.memory.source == "") {
             		var targets = creep.room.find(FIND_STRUCTURES, {
     	                filter: (structure) => {
-    	                    return (structure.structureType == STRUCTURE_LINK) 
+    	                    return (structure.structureType == STRUCTURE_LINK && structure.energy > 0) 
     	                }
     	        	});
             		
@@ -37,7 +39,7 @@ var roleTransferer = {
                     	creep.memory.source = "";
             	}
                 
-                if(creep.carry.energy == creep.carryCapacity || (Game.getObjectById(creep.memory.source).energy == 0 && creep.carry.energy > 0)) {
+                if(creep.carry.energy == creep.carryCapacity || (creep.memory.source != undefined && (Game.getObjectById(creep.memory.source).energy == 0 && creep.carry.energy > 0))) {
                     creep.memory.delivering = true;
                     creep.memory.source = "";
                 }
@@ -51,6 +53,17 @@ var roleTransferer = {
                 
                 if(creep.carry.energy == 0) {
                     creep.memory.delivering = false;
+                    var targets = creep.room.find(FIND_STRUCTURES, {
+    	                filter: (structure) => {
+    	                    return (structure.structureType == STRUCTURE_LINK) 
+    	                }
+    	        	});
+                    
+                  //console.log("targets: " + targets.length);
+            		source = creep.pos.findClosestByPath(targets);
+
+            		if (source != null)
+            			creep.memory.source = source.id;
                 }
             }
         }

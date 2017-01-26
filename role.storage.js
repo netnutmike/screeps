@@ -15,7 +15,7 @@ var roleStorage = {
             
             if(creep.memory.delivering != true) {
             	if (creep.memory.source == undefined || creep.memory.source == "") {
-            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		source = creep.pos.findClosestByRange(FIND_SOURCES);
             		if (source != null)
             			creep.memory.source = source.id;
             	}

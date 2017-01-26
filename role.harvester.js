@@ -3,6 +3,7 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
 	   
+    	//console.log(creep.name + "  " + creep.room.name);
         var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (((structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN )  &&
@@ -47,14 +48,25 @@ var roleHarvester = {
                 }
             }
             else {
-            	var successcode = creep.transfer(targets[0], RESOURCE_ENERGY);
-            	//console.log(successcode);
-                if(successcode == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0]);
+            	if (creep.memory.destid == undefined || creep.memory.destid == "") {
+            		dest = creep.pos.findClosestByRange(targets);
+            		//console.log(targets);
+            		//console.log(dest);
+            		if (dest != null)
+            			creep.memory.destid = dest.id; 
+            	}
+            	
+                if(creep.transfer(Game.getObjectById(creep.memory.destid), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Game.getObjectById(creep.memory.destid));
                 }
+                
+                //console.log(Game.getObjectById(creep.memory.destid).energy + " / " + Game.getObjectById(creep.memory.destid).energyCapacity);
+                if (Game.getObjectById(creep.memory.destid).energy == Game.getObjectById(creep.memory.destid).energyCapacity)
+                	creep.memory.destid = "";
                 
                 if(creep.carry.energy == 0) {
                     creep.memory.delivering = false;
+                    creep.memory.destid = "";
                 }
             }
         }

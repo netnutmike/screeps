@@ -132,7 +132,7 @@ var roleRepairer = {
 	            }
 	    	} else {
 	    		var exit = creep.room.findExitTo(creep.memory.remote);
-                creep.moveTo(creep.pos.findClosestByRange(exit));
+                creep.moveTo(creep.pos.findClosestByPath(exit));
 	    	}
 	    }
 	},

@@ -21,7 +21,7 @@ var roleSpawnMaintainer = {
                             return (structure.structureType == STRUCTURE_STORAGE )
                         }
             		});
-            		source = creep.pos.findClosestByPath(source);
+            		source = creep.pos.findClosestByRange(source);
             		if (source != null)
             			creep.memory.source = source.id;
             	}
@@ -41,12 +41,25 @@ var roleSpawnMaintainer = {
                 }
             }
             else {
-                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0]);
+            	if (creep.memory.destid == undefined || creep.memory.destid == "") {
+            	    //console.log(targets.length);
+            		dest = creep.pos.findClosestByRange(targets);
+            		if (dest == null)
+            		    dest = creep.pos.findClosestByRange(targets);
+            		//console.log(dest);
+            		creep.memory.destid = dest.id; 
+            	}
+            	
+                if(creep.transfer(Game.getObjectById(creep.memory.destid), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Game.getObjectById(creep.memory.destid));
                 }
+                
+                if (Game.getObjectById(creep.memory.destid).energy == Game.getObjectById(creep.memory.destid).energyCapacity)
+                	creep.memory.destid = "";
                 
                 if(creep.carry.energy == 0) {
                     creep.memory.delivering = false;
+                    creep.memory.destid = "";
                 }
             }
         }

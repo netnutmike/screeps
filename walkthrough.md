@@ -76,9 +76,9 @@ NOTE: If you are building roads through a swamp, it is best to build the road cl
 
 Once the room enters grow mode, complete any construction you have left.  It will build slower but you will be a while for the next level anyways.  One thing you do not want to build yet is ramparts.  You can build them but it is hard to keep them safe because they age and go away very quickly.  Sometimes faster than you can build a rampart repairer.  In the next level we will be buildig a tower which will help solve this problem.  At this level you should still be in safe mode anyways.
 
-In level 2 grow mode, I recommend that you build walls across every gateway to another room.  At this point you have no reason to be leacing the room, walls are cheap and very easily can be removed to build a rampart later.  This is just an extra step to keep you safe until you get stronger.
+In level 2 grow mode, I recommend that you build walls across every gateway to another room.  At this point you have no reason to be leaving the room, walls are cheap and very easily can be removed to build a rampart later.  This is just an extra step to keep you safe until you get stronger.
 
-In all levels and modes, builders are only built if needed.  The same is true with rampart repairers, wall repairers, etc.  If they are not needed there is no need to waste the energy to build them.  This is good to know because it can help you decide if you want to build something now after the buildig is done or wait until your next build mode.
+In all levels and modes, builders are only built if needed.  The same is true with rampart repairers, wall repairers, etc.  If they are not needed there is no need to waste the energy to build them.  This is good to know because it can help you decide if you want to build something now after the building is done or wait until your next build mode.
 
 At this point to sit back and wait until the next level.  
 
@@ -112,7 +112,7 @@ One the room enters grow mode, complete any construction.  If you have not creat
 
 If everything looks good, there are a couple of options we can employ here.  We have the option to deploy remote upgraders and remote harvesters.  Remote upgraders will go to these other rooms that you specify and will harvest energy and come back and perform the upgrade on the room controller like the other upgraders.  
 
-Remote harvesters will go to other rooms and harvest energy, they can bring it back and either deliver the energy like the regular harvester, deliver it to storage, links or containers.  To start out I would recommend delivering it to spawns or exrentions, that is the default (or should be if the options were adjusted early in the process).  To setup a remote upgrader you need to setup the number you want to build (AUTOMODE is always 0 for this role) and the name of the remote room.  The same goes for the remote harvester.  Below are examples of 1 each going to 2 different rooms:
+Remote harvesters will go to other rooms and harvest energy, they can bring it back and either deliver the energy like the regular harvester, deliver it to storage, links or containers.  To start out I would recommend delivering it to spawns or extentions, that is the default (or should be if the options were adjusted early in the process).  To setup a remote upgrader you need to setup the number you want to build (AUTOMODE is always 0 for this role) and the name of the remote room.  The same goes for the remote harvester.  Below are examples of 1 each going to 2 different rooms:
 ```
 'remoteUpgrader' : {
             	'build'  : 1,
@@ -154,5 +154,5 @@ If you are finding that you really do not need the remote harvester or you have 
             }
 ```
 
-## Lvel 5
+## Level 5
 

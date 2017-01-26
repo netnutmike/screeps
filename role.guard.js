@@ -9,8 +9,9 @@ var roleGuard = {
             //console.log('Creep ' + creep.name + ' delivering:' + creep.memory.delivering + ' on board:' + creep.carry.energy);
             
            creep.moveTo(targets[0]);
-           creep.attack(targets[0]);
            creep.rangedAttack(targets[0]);
+           creep.attack(targets[0]);
+           
         }
 	}
 };

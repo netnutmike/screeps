@@ -36,10 +36,20 @@ module.exports.loop = function () {
     //for(var room_it in Game.rooms) {
     //    var room = Game.rooms[room_it]
     //    var spawn = room.find(FIND_MY_SPAWNS)[0]; 
-    creepsManager.run(home);
-    creepsManager.run(room2);
-    creepsManager.run(room3);
+	
+	//Only run every 5 game ticks to save CPU.
+	if (Game.time % 5 === 0) {
+	    creepsManager.run(home);
+	    creepsManager.run(room2);
+	    creepsManager.run(room3);
+	    creepsManager.run(room4);
+	    //creepsManager.run(room5);
+	}
 
+	roleDefender.run(home);
+	roleDefender.run(room2);
+	roleDefender.run(room3);
+	roleDefender.run(room4);
     rolesController.run(); 
     
     

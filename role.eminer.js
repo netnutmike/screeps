@@ -19,7 +19,7 @@ var roleEMiner = {
             
             if(creep.memory.delivering != true) {
             	if (creep.memory.source == undefined || creep.memory.source == "") {
-            		source = creep.pos.findClosestByPath(FIND_SOURCES);
+            		source = creep.pos.findClosestByRange(FIND_SOURCES);
             		if (source != null)
             			creep.memory.source = source.id;
             	}
@@ -37,7 +37,7 @@ var roleEMiner = {
             else {
             	
             	if (creep.memory.destination == undefined || creep.memory.destination == "") {
-            		target = creep.pos.findClosestByPath(targets);
+            		target = creep.pos.findClosestByRange(targets);
             		if (target != null)
             			creep.memory.destination = target.id;
             	}

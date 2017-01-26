@@ -62,9 +62,13 @@ var roleWallRepairer = {
     			for(var index in halfBroken)
     			{
     			    //console.log("Structure: " + halfBroken[index].name + " hits:" + halfBroken[index].hits + "   total:" + halfBroken[index].hitsMax);
-    				if ((((halfBroken[index].hits / halfBroken[index].hitsMax) < repairValue) && halfBroken[index].structureType == 'rampart'))
+    				if ((((halfBroken[index].hits / halfBroken[index].hitsMax) < repairValue) && halfBroken[index].structureType == 'rampart')) {
     			        toRepair.push(halfBroken[index]);
+    			        //console.log(halfBroken[index].hits + " / " + halfBroken[index].hitsMax + " = " + (halfBroken[index].hits / halfBroken[index].hitsMax) + " which is less than " + repairValue)
+    				}
+    			        
                 }
+                
 	        } else {
 	        	toRepair.push(Game.getObjectById(creep.memory.currentRepair));
 	        }
@@ -76,13 +80,13 @@ var roleWallRepairer = {
 
 			    var structure = toRepair[0];
 
-				creep.moveTo(structure);
+                creep.memory.currentRepair = structure.id;
+				
 				var repairStatus = creep.repair(structure)
 
-				if (repairStatus == OK)  
-				    creep.memory.currentRepair = structure.id;
-				else 
-				    creep.memory.currentRepair = "";
+                if (repairStatus == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(structure);
+				} 
 
 				creep.room.memory.rampartRepairWaitCounter = 0;
 
@@ -109,6 +113,8 @@ var roleWallRepairer = {
     			if((halfBroken[index].hits / halfBroken[index].hitsMax) < 0.5)
     				thereAreFixes = true;
             }
+            
+            creep.memory.currentRepair = "";
             
             if(thereAreFixes) {
     	        //var sources = creep.room.find(FIND_SOURCES);

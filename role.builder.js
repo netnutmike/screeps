@@ -23,8 +23,9 @@ var roleBuilder = {
 	    	if (creep.room.name == creep.memory.remote) {
 	    		var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 	            if(targets.length) {
-	                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-	                    creep.moveTo(targets[0]);
+	                dest = creep.pos.findClosestByPath(targets);
+	                if(creep.build(dest) == ERR_NOT_IN_RANGE) {
+	                    creep.moveTo(dest);
 	                }
 	            }
             } else {

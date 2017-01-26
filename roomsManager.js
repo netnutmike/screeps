@@ -46,6 +46,7 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '2', 
+                    'upgrader2' : '0',
                     'guard' : '0', 
                     'remoteUpgrader' : '0',
                     'remoteHarvester' : '0',
@@ -58,6 +59,9 @@ var roomsManager = {
                     'wallRepairer' : '0',
                     'wallRepairer2' : '0',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '0',
                     'storage' : '0',
@@ -75,6 +79,7 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '2', 
+                    'upgrader2' : '0',
                     'guard' : '0', 
                     'remoteUpgrader' : '0', 
                     'remoteHarvester' : '0',
@@ -87,6 +92,9 @@ var roomsManager = {
                     'wallRepairer' : '0',
                     'wallRepairer2' : '0',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '0',
                     'storage' : '0',
@@ -103,6 +111,7 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '2', 
+                    'upgrader2' : '0',
                     'guard' : '0', 
                     'remoteUpgrader' : '0', 
                     'remoteHarvester' : '0',
@@ -114,6 +123,9 @@ var roomsManager = {
                     'rampartRepairer' : '0',
                     'wallRepairer' : '0',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '0',
                     'storage' : '0',
@@ -130,8 +142,9 @@ var roomsManager = {
                    'builder2' : '0',
                    'builder3' : '0',
                    'upgrader' : '4', 
+                   'upgrader2' : '0',
                    'guard' : '0', 
-                   'remoteUpgrader' : '1', 
+                   'remoteUpgrader' : '0', 
                    'remoteHarvester' : '0',
                    'ldupgrader' : '0', 
                    'repairer' : '1', 
@@ -141,6 +154,9 @@ var roomsManager = {
                    'rampartRepairer' : '1',
                    'wallRepairer' : '1',
                    'claimers' : '0',
+                   'reserve' : '0',
+                   'reserve2' : '0',
+                   'reserve3' : '0',
                    'attackers' : '0',
                    'towerRepair' : '0',
                    'storage' : '0',
@@ -158,9 +174,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '4', 
+                    'upgrader2' : '0',
                     'guard' : '1', 
-                    'remoteUpgrader' : '2',
-                    'remoteHarvester' : '2',
+                    'remoteUpgrader' : '0',
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -169,6 +186,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '0',
                     'storage' : '0',
@@ -185,9 +205,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '2', 
+                    'upgrader2' : '0',
                     'guard' : '0', 
                     'remoteUpgrader' : '0', 
-                    'remoteHarvester' : '1',
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -196,6 +217,9 @@ var roomsManager = {
                     'rampartRepairer' : '0',
                     'wallRepairer' : '0',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '0',
                     'storage' : '0',
@@ -212,9 +236,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '4',
+                    'upgrader2' : '0',
                     'guard' : '1', 
-                    'remoteUpgrader' : '2', 
-                    'remoteHarvester' : '2',
+                    'remoteUpgrader' : '0', 
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -223,6 +248,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '0',
@@ -239,10 +267,11 @@ var roomsManager = {
                     'builder' : '1', 
                     'builder2' : '0',
                     'builder3' : '0',
-                    'upgrader' : '7',
+                    'upgrader' : '5',
+                    'upgrader2' : '0',
                     'guard' : '2', 
-                    'remoteUpgrader' : '3', 
-                    'remoteHarvester' : '3',
+                    'remoteUpgrader' : '0', 
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -251,6 +280,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '0',
@@ -267,9 +299,10 @@ var roomsManager = {
                    'builder2' : '0',
                    'builder3' : '0',
                    'upgrader' : '3',
+                   'upgrader2' : '0',
                    'guard' : '2', 
                    'remoteUpgrader' : '0', 
-                   'remoteHarvester' : '1',
+                   'remoteHarvester' : '0',
                    'ldupgrader' : '0', 
                    'repairer' : '1', 
                    'repairer2' : '0',
@@ -278,6 +311,9 @@ var roomsManager = {
                    'rampartRepairer' : '1',
                    'wallRepairer' : '0',
                    'claimers' : '0',
+                   'reserve' : '0',
+                   'reserve2' : '0',
+                   'reserve3' : '0',
                    'attackers' : '0',
                    'towerRepair' : '1',
                    'storage' : '0',
@@ -294,9 +330,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '5',
+                    'upgrader2' : '0',
                     'guard' : '2', 
-                    'remoteUpgrader' : '4', 
-                    'remoteHarvester' : '3',
+                    'remoteUpgrader' : '0', 
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -305,6 +342,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '1',
@@ -322,9 +362,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '5',
+                    'upgrader2' : '0',
                     'guard' : '2', 
-                    'remoteUpgrader' : '3', 
-                    'remoteHarvester' : '3',
+                    'remoteUpgrader' : '0', 
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -333,6 +374,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '1',
@@ -349,9 +393,10 @@ var roomsManager = {
                    'builder2' : '0',
                    'builder3' : '0',
                    'upgrader' : '3',
+                   'upgrader2' : '0',
                    'guard' : '2', 
-                   'remoteUpgrader' : '2', 
-                   'remoteHarvester' : '3',
+                   'remoteUpgrader' : '0', 
+                   'remoteHarvester' : '0',
                    'ldupgrader' : '0', 
                    'repairer' : '1', 
                    'repairer2' : '0',
@@ -360,6 +405,9 @@ var roomsManager = {
                    'rampartRepairer' : '1',
                    'wallRepairer' : '1',
                    'claimers' : '0',
+                   'reserve' : '0',
+                   'reserve2' : '0',
+                   'reserve3' : '0',
                    'attackers' : '0',
                    'towerRepair' : '1',
                    'storage' : '1',
@@ -376,9 +424,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '7',
+                    'upgrader2' : '0',
                     'guard' : '2', 
-                    'remoteUpgrader' : '3', 
-                    'remoteHarvester' : '3',
+                    'remoteUpgrader' : '0', 
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -387,6 +436,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '2',
@@ -404,9 +456,10 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '7',
+                    'upgrader2' : '0',
                     'guard' : '2', 
-                    'remoteUpgrader' : '3', 
-                    'remoteHarvester' : '3',
+                    'remoteUpgrader' : '0', 
+                    'remoteHarvester' : '0',
                     'ldupgrader' : '0', 
                     'repairer' : '1', 
                     'repairer2' : '0',
@@ -415,6 +468,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '2',
@@ -431,6 +487,7 @@ var roomsManager = {
                    'builder2' : '0',
                    'builder3' : '0',
                    'upgrader' : '3',
+                   'upgrader2' : '0',
                    'guard' : '2', 
                    'remoteUpgrader' : '2', 
                    'remoteHarvester' : '3',
@@ -442,6 +499,9 @@ var roomsManager = {
                    'rampartRepairer' : '1',
                    'wallRepairer' : '1',
                    'claimers' : '0',
+                   'reserve' : '0',
+                   'reserve2' : '0',
+                   'reserve3' : '0',
                    'attackers' : '0',
                    'towerRepair' : '1',
                    'storage' : '2',
@@ -458,6 +518,7 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '7',
+                    'upgrader2' : '0',
                     'guard' : '3', 
                     'remoteUpgrader' : '2', 
                     'remoteHarvester' : '4',
@@ -469,6 +530,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '3',
@@ -477,7 +541,8 @@ var roomsManager = {
                     'eminer' : '0',
                     'eminer2' : '0',
                     'spawnMaint' : '0'
-                },
+                }
+            },
             '7' : {									// Room Level 5
                 '1' : {								// Room Mode = NEWROOM
                     'harvester' : '3', 
@@ -485,6 +550,7 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '7',
+                    'upgrader2' : '0',
                     'guard' : '2', 
                     'remoteUpgrader' : '3', 
                     'remoteHarvester' : '4',
@@ -496,6 +562,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '3',
@@ -512,6 +581,7 @@ var roomsManager = {
                    'builder2' : '0',
                    'builder3' : '0',
                    'upgrader' : '3',
+                   'upgrader2' : '0',
                    'guard' : '2', 
                    'remoteUpgrader' : '2', 
                    'remoteHarvester' : '3',
@@ -523,6 +593,9 @@ var roomsManager = {
                    'rampartRepairer' : '1',
                    'wallRepairer' : '1',
                    'claimers' : '0',
+                   'reserve' : '0',
+                   'reserve2' : '0',
+                   'reserve3' : '0',
                    'attackers' : '0',
                    'towerRepair' : '1',
                    'storage' : '3',
@@ -539,6 +612,7 @@ var roomsManager = {
                     'builder2' : '0',
                     'builder3' : '0',
                     'upgrader' : '7',
+                    'upgrader2' : '0',
                     'guard' : '2', 
                     'remoteUpgrader' : '2', 
                     'remoteHarvester' : '4',
@@ -550,6 +624,9 @@ var roomsManager = {
                     'rampartRepairer' : '1',
                     'wallRepairer' : '1',
                     'claimers' : '0',
+                    'reserve' : '0',
+                    'reserve2' : '0',
+                    'reserve3' : '0',
                     'attackers' : '0',
                     'towerRepair' : '1',
                     'storage' : '4',
@@ -560,7 +637,7 @@ var roomsManager = {
                     'spawnMaint' : '0'
                 }
             }
-        }
+        
         
     };
         
@@ -584,6 +661,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,CARRY,MOVE],
+                    'upgrader2' : [WORK,CARRY,MOVE],
                     'guard' : [WORK,CARRY,MOVE],
                     'remoteUpgrader' : [WORK,CARRY,MOVE],
                     'remoteHarvester' : [WORK,CARRY,MOVE],
@@ -614,6 +692,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,CARRY,MOVE],
+                    'upgrader2' : [WORK,CARRY,MOVE],
                     'guard' : [TOUGH,MOVE,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,MOVE],
@@ -642,6 +721,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,CARRY,MOVE],
+                    'upgrader2' : [WORK,CARRY,MOVE],
                     'guard' : [TOUGH,MOVE,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,CARRY,MOVE],
                     'remoteHarvester' : [WORK,CARRY,MOVE],
@@ -670,6 +750,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'upgrader2' : [WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'guard' : [TOUGH,MOVE,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,MOVE],
@@ -699,6 +780,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,MOVE,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,MOVE],
@@ -716,8 +798,8 @@ var roomsManager = {
                     'storage' : [WORK,CARRY,MOVE],
                     'remoteStorage' : [WORK,CARRY,MOVE],
                     'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
+                    'eminer' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer2' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'spawnMaint' : [WORK,CARRY,MOVE]
                 },
                 
@@ -727,6 +809,7 @@ var roomsManager = {
                     'builder2' : [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
                     'builder3' : [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
                     'upgrader' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,MOVE,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,MOVE],
@@ -744,8 +827,8 @@ var roomsManager = {
                     'storage' : [WORK,CARRY,MOVE],
                     'remoteStorage' : [WORK,CARRY,MOVE],
                     'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
+                    'eminer' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer2' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'spawnMaint' : [WORK,CARRY,MOVE]
                 },
                 
@@ -755,6 +838,7 @@ var roomsManager = {
                     'builder2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'builder3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,MOVE,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
@@ -772,8 +856,8 @@ var roomsManager = {
                     'storage' : [WORK,CARRY,MOVE],
                     'remoteStorage' : [WORK,CARRY,MOVE],
                     'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
+                    'eminer' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'spawnMaint' : [WORK,CARRY,MOVE]
                 }
             },
@@ -784,6 +868,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
             		'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,MOVE,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
@@ -800,10 +885,10 @@ var roomsManager = {
                     'towerRepair' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'storage' : [WORK,CARRY,MOVE],
                     'remoteStorage' : [WORK,CARRY,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE]
                 },
                 
                 '2' : {
@@ -812,6 +897,7 @@ var roomsManager = {
                     'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,MOVE,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -828,10 +914,10 @@ var roomsManager = {
                     'towerRepair' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'storage' : [WORK,CARRY,MOVE],
                     'remoteStorage' : [WORK,CARRY,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE]
                 },
                 
                 '3' : {
@@ -839,7 +925,8 @@ var roomsManager = {
                     'builder' : [WORK,CARRY,MOVE],
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
-                    'upgrader' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'guard' : [TOUGH,TOUGH,MOVE,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -856,10 +943,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteStorage' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'claimer' : [CLAIM,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'reserve' : [CLAIM,CARRY,MOVE,MOVE,MOVE],
+                    'reserve2' : [CLAIM,CARRY,MOVE,MOVE,MOVE],
+                    'reserve3' : [CLAIM,CARRY,MOVE,MOVE,MOVE]
                 }
             },
             '5' : {
@@ -868,7 +959,8 @@ var roomsManager = {
                     'builder' : [WORK,CARRY,MOVE],
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
-                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -885,10 +977,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 },
                 
                 '2' : {
@@ -896,7 +992,8 @@ var roomsManager = {
                     'builder' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
-                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -913,10 +1010,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,MOVE],
                     'eminer' : [WORK,CARRY,MOVE],
                     'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE]
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 },
                 
                 '3' : {
@@ -925,6 +1026,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -941,10 +1043,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,MOVE],
                     'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE]
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 }
             },
             '6' : {
@@ -954,6 +1060,7 @@ var roomsManager = {
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -970,10 +1077,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE]
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 },
                 
                 '2' : {
@@ -982,6 +1093,7 @@ var roomsManager = {
                     'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,MOVE,MOVE,RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
@@ -998,10 +1110,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 },
                 
                 '3' : {
@@ -1010,6 +1126,7 @@ var roomsManager = {
                     'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE,MOVE,RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
@@ -1031,7 +1148,11 @@ var roomsManager = {
                     'eminer' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'eminer2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
-                    'attackers' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE]
+                    'attackers' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 }
             },
             '7' : {
@@ -1040,16 +1161,17 @@ var roomsManager = {
                     'builder' : [WORK,CARRY,MOVE],
                     'builder2' : [WORK,CARRY,MOVE],
                     'builder3' : [WORK,CARRY,MOVE],
-                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester3' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'ldupgrader' : [WORK,CARRY,MOVE],
-                    'repairer' : [WORK,CARRY,MOVE],
-                    'repairer2' : [WORK,CARRY,MOVE],
-                    'repairer3' : [WORK,CARRY,MOVE],
+                    'repairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'emergencyRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'rampartRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'wallRepairer' : [WORK,CARRY,MOVE],
@@ -1057,10 +1179,14 @@ var roomsManager = {
                     'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'eminer' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'eminer2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 },
                 
                 '2' : {
@@ -1069,15 +1195,16 @@ var roomsManager = {
                     'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
                     'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'ldupgrader' : [WORK,CARRY,MOVE],
-                    'repairer' : [WORK,CARRY,MOVE],
-                    'repairer2' : [WORK,CARRY,MOVE],
-                    'repairer3' : [WORK,CARRY,MOVE],
+                    'repairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'emergencyRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'rampartRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'wallRepairer' : [WORK,CARRY,MOVE],
@@ -1085,27 +1212,32 @@ var roomsManager = {
                     'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 },
                 
                 '3' : {
                     'harvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'builder' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'builder' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-                    'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,RANGED_ATTACK,ATTACK,RANGED_ATTACK,ATTACK],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,RANGED_ATTACK,RANGED_ATTACK,ATTACK,RANGED_ATTACK,RANGED_ATTACK],
                     'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'remoteHarvester3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
                     'ldupgrader' : [WORK,CARRY,MOVE],
-                    'repairer' : [WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
-                    'repairer2' : [WORK,CARRY,CARRY,CARRY,MOVE,MOVE],
-                    'repairer3' : [WORK,CARRY,MOVE],
+                    'repairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'emergencyRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
                     'rampartRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
                     'wallRepairer' : [WORK,CARRY,MOVE],
@@ -1113,10 +1245,114 @@ var roomsManager = {
                     'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
                     'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
-                    'transfer' : [WORK,CARRY,MOVE],
-                    'eminer' : [WORK,CARRY,MOVE],
-                    'eminer2' : [WORK,CARRY,MOVE],
-                    'spawnMaint' : [WORK,CARRY,MOVE]
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
+                }
+            },
+            '8' : {
+                '1' : {
+                    'harvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'builder' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
+                    'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'remoteHarvester' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester3' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'ldupgrader' : [WORK,CARRY,MOVE],
+                    'repairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'emergencyRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'rampartRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'wallRepairer' : [WORK,CARRY,MOVE],
+                    'wallRepairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
+                },
+                
+                '2' : {
+                    'harvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'builder' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,ATTACK,ATTACK,ATTACK],
+                    'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'ldupgrader' : [WORK,CARRY,MOVE],
+                    'repairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'emergencyRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'rampartRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'wallRepairer' : [WORK,CARRY,MOVE],
+                    'wallRepairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
+                },
+                
+                '3' : {
+                    'harvester' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'builder' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'builder3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'upgrader' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'upgrader2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'guard' : [TOUGH,TOUGH,TOUGH,MOVE,MOVE,RANGED_ATTACK,RANGED_ATTACK,ATTACK,RANGED_ATTACK,RANGED_ATTACK],
+                    'remoteUpgrader' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'remoteHarvester3' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'ldupgrader' : [WORK,CARRY,MOVE],
+                    'repairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer2' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'repairer3' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'emergencyRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+                    'rampartRepairer' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'wallRepairer' : [WORK,CARRY,MOVE],
+                    'wallRepairer2' : [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'towerRepair' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'storage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+                    'remoteStorage' : [WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'transfer' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE],
+                    'eminer' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'eminer2' : [WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+                    'spawnMaint' : [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
+                    'claimer' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve2' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM],
+                    'reserve3' : [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,CLAIM,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CLAIM]
                 }
             }
         };
@@ -1158,6 +1394,11 @@ var roomsManager = {
 			energyDestination2 = rooms[roomID]['roomOptions']['dest2'];
     	else
     		energyDestination2 = rooms[roomID][roleName]['dest2'];
+		
+		if (rooms[roomID][roleName]['via'] == undefined || rooms[roomID][roleName]['via'] == -1) 
+			via = null;
+    	else
+    		via = rooms[roomID][roleName]['via'];;
     	
     	var memstr = 	{ 	role: roleName,
     						home: homeroom,
@@ -1165,7 +1406,8 @@ var roomsManager = {
     						esource: energySource,
     						esource2: energySource2,
     						dest: energyDestination,
-    						dest2: energyDestination2
+    						dest2: energyDestination2,
+    						via: via
     					};
     	
     	return memstr;
@@ -1190,6 +1432,7 @@ var roomsManager = {
     },				//getHomeRoom
     
     getLinkTo: function(roomID, linkNumber) {
+    	//console.log(roomID + "  " + linkNumber);
     	return rooms[roomID]['linkOptions'][linkNumber]['to'];
     	
     },				//getLinkTo
@@ -1202,6 +1445,49 @@ var roomsManager = {
     getLinkFrom: function(roomID, linkNumber) {
     	return rooms[roomID]['linkOptions'][linkNumber]['from'];
     	
+    },
+    
+    newEnemiesInRoom: function(roomID, enemyCount) {    	
+    	if (Memory.hostileRooms != undefined) {
+	    	for(var enemy in Memory.hostileRooms) {
+				if (Memory.hostileRooms[enemy]['roomID'] == roomID)
+					if (Memory.hostileRooms[enemy]['TTL'] >= (enemyCount + Game.time))
+						return;
+					else {
+						Memory.hostileRooms[enemy]['TTL'] = enemyCount + Game.time;
+						return;
+					}
+	    	}
+	    	
+	    	Memory.hostileRooms.push({'roomID': roomID, 'TTL' : enemyCount + Game.time});
+	    	
+    	} else {
+	    	Memory.hostileRooms = [];
+	    	Memory.hostileRooms.push({'roomID': roomID, 'TTL' : enemyCount + Game.time});
+    	}
+    	
+    },
+    
+    enemiesInRoom: function (roomID) {
+    	for (var roomNum in Memory.hostileRooms)
+    		if (Memory.hostileRooms[roomNum] != undefined && Memory.hostileRooms[roomNum]['roomID'] == roomID) 
+    			if (Memory.hostileRooms[roomNum]['TTL'] > Game.time)
+    				return true;
+    		else
+    				roomsManager.rebuildEnemiesList();
+    	
+    	return false;
+    },
+    
+    rebuildEnemiesList: function() {
+    	var newRooms = [];
+    	
+    	for (var roomNum in Memory.hostileRooms) {
+    		if (Memory.hostileRooms[roomNum]['TTL'] > Game.time)
+    			newRooms.push({'roomID' : Memory.hostileRooms[roomNum]['roomID'], 'TTL' : Memory.hostileRooms[roomNum]['TTL']})
+    	}
+    	
+    	Memory.hostileRooms = newRooms;
     }
 }       
 

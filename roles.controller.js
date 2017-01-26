@@ -18,6 +18,7 @@ var roleRemoteStorage = require('role.remoteStorage');
 var roleTransferer = require('role.transferer');
 var roleEMiner = require('role.eminer');
 var roleSpawnMaint = require('role.spawnMaintainer');
+var roleReserve = require('role.reserve');
 
 var rolesController = {
     
@@ -36,6 +37,7 @@ var rolesController = {
             		roleRemoteHarvester.run(creep);
             		break;
             	case 'upgrader':
+            	case 'upgrader2':
             		roleUpgrader.run(creep);
             		break;
             	case 'newUpgrader':
@@ -59,7 +61,7 @@ var rolesController = {
             	case 'attackers':
             	case 'attacekr':
             		roleAttacker.run(creep);
-            		roleAttacker.attack(creep);
+            		//roleAttacker.attack(creep);
             		break;
             	case 'repairer':
             	case 'repairer2':
@@ -97,6 +99,11 @@ var rolesController = {
             		break;
             	case 'spawnMaint':
             		roleSpawnMaint.run(creep);
+            		break;
+            	case 'reserve':
+            	case 'reserve2':
+            	case 'reserve3':
+            		roleReserve.run(creep);
             		break;
             }
         }

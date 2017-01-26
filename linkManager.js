@@ -29,14 +29,23 @@ var linkManager = {
 		var maintainValue = roomsManager.getLinkMaintain(room.name, linkNo);
 		var fromVar = roomsManager.getLinkFrom(room.name, linkNo);
 		
+		if (toVar == -1)
+			return;
+		
+		if (toVar <= 10) {
+			linkO = linkObjects[toVar];
+		} else {
+			linkO = Game.getObjectById(toVar);
+		}
+		
 		if (linkObjects[linkNo].energy > maintainValue) {
 			var transferAmount = linkObjects[linkNo].energy - maintainValue;
 			if (linkObjects[linkNo].cooldown == 0)
-				linkObjects[linkNo].transferEnergy(linkObjects[toVar], transferAmount);
+				linkObjects[linkNo].transferEnergy(linkO, transferAmount);
 		} else if (linkObjects[linkNo].energy < maintainValue && fromVar != NONE) {
 			var transferAmount = maintainValue - linkObjects[linkNo].energy;
 			
-			linkObjects[fromVar].transferEnergy(linkObjects[linkNo], transferAmount);
+			linkObjects[linkNo].transferEnergy(linkO, transferAmount);
 		}
 		
 	},
